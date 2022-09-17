@@ -216,8 +216,7 @@ if (hasDriversLicens && hasGoodVision && !isTired) {
  */
 
 // ? conding challenge #
-
-const dolphinScore = (100 + 110 + 10) / 3;
+/* onst dolphinScore = (100 + 110 + 10) / 3;
 const koalaSocres = (100 + 110 + 40) / 3;
 console.log(dolphinScore, koalaSocres);
 
@@ -241,5 +240,79 @@ if (
 } else {
 	console.log(`draw my boys draw`);
 }
+ */
+//* switch
 
-// bonu 2
+/* const day = 'sunday';
+
+switch (day) {
+	case 'monday': /// day === 'monday'
+		console.log('plan my trip 🚲');
+		break;
+	case 'tuesday':
+		console.log('prepare for exam 📔');
+		break;
+	case 'wednesday':
+	case 'thursday':
+		console.log('writing book 😎');
+		break;
+	case 'friday':
+	case 'saturday':
+		console.log('weekend pych 🙃');
+		break;
+	case 'sunday':
+		console.log('sunday funday 👙');
+	default:
+		break;
+}
+
+if (day === 'monday') console.log('preapare for trip 🥲');
+else if (day === 'tuesday') console.log('gym gym 💪');
+else if (day === 'wednesday' || day === 'thursday')
+	console.log('hecking time 💻');
+else if (day === 'friday' || day === 'saturday')
+	console.log('paradise walk 🌲');
+else if (day === 'sunday') console.log('funday sunday 🧟');
+else console.log('which day mfk');
+ */
+
+// * expression & statement
+//  expression is  produce a value eg: 8+3, true && true;
+// statement not produce value itself : eg:
+// if(22<89) {const string = 'whati'}
+
+// console.log(`iam ${33 + 88 - 99} yeh${foo}`);
+
+// * conditonal operator : ternery
+/*
+const age = 10;
+const output = age > 19 ? 'i like 🍷' : 'i like 🍠';
+
+let drink;
+if (age >= 15) {
+	drink = '🍷';
+} else {
+	drink = '🔌';
+}
+console.log(drink);
+console.log(`i like  ${age > 10 ? 'yours' : 'mees'} you`);
+ */
+
+// ? coding challenge #
+
+// const bill = 10 + 10 + 20;
+
+// const tip = bill >= 50 && bill <= 300 ? (bill * 15) / 100 : (bill * 20) / 100;
+
+// console.warn(
+// 	`The bill was ${bill}, The tip was ${tip} and total value is ${bill + tip} `
+// );
+
+// TODO: javascript releases
+// firsname: Mocha
+// next: livescript
+// atlast : javascript
+/*
+ 1997 : ES1
+ 2015 : ES6m
+ */
