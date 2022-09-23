@@ -84,7 +84,7 @@ function untillRetirement(birthYear, firsName) {
 } */
 
 // ? coding challenge #1
-
+/*
 const calcAverage = (a, b, c) => (a + b + c) / 3;
 const dolphinScore = calcAverage(10, 20, 500);
 const koalaScore = calcAverage(10, 20, 300);
@@ -101,5 +101,92 @@ function checkWinner(avgDolphins, avgKoalas) {
 		console.log(`Koalas win  with (${avgKoalas} vs ${avgDolphins}) points 🏆`);
 	} else {
 		console.log('nobody wins');
-	}
+	}}*/
+
+// * Data structure
+// * Array
+/*
+const friends = ['jon', 'jane', 'bob', 'angela', 'Shania'];
+console.log(friends);
+
+const years = new Array(1883, 222, 3333, 88.333); // ! not recommend
+console.log(years);
+
+console.log(friends[0]);
+console.log(friends[3]);
+
+console.log(friends.length); // no of elements
+console.log(friends[friends.length - 1]); // last element
+
+friends[3] = 'Aleen'; // assign new value
+console.log(friends);
+
+const jon = ['jon', 'doe', 2030 - 2022, '5.5', true, friends];
+console.log(jon);
+ */
+// Exercise
+
+/*const calcAge = function (birthYear) {
+	return 2037 - birthYear;
+};
+
+const year = [2001, 2008, 2010, 2020, 1899, 1977];
+
+const ageOne = calcAge(year[0]);
+const ageTwo = calcAge(year[1]);
+const ageLast = calcAge(year[year.length - 1]);
+const ages = [ageOne, ageTwo, ageLast];
+ */
+
+// * array  methods
+/*
+const friends = ['jon', 'jane', 'bob', 'angela', 'Shania'];
+const newFriens = friends.push('kimike'); // add to end
+console.log(newFriens);
+
+friends.unshift('Mike'); // add to start
+console.log(friends);
+
+console.log(friends); // remove last value
+friends.pop();
+console.log(friends.pop()); // return removed value
+
+friends.shift(); // remove first value
+console.log(friends);
+console.log(friends.shift()); // return removed value
+
+console.log(friends);
+console.log(friends.indexOf('bob')); // to find index of value
+
+console.log(friends.includes('jane')); // return a boolean value
+
+friends.push('23');
+console.log(friends.includes(23)); // use strict
+
+if (friends.includes('angela')) {
+	console.log('yeh 😀 it is');
 }
+ */
+
+// ? coding challenge #2
+
+const bills = [125, 555, 44];
+
+const calcTip = (bill) =>
+	bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+console.log(calcTip(100));
+
+let tips = [];
+
+tips.push(calcTip(bills[0]));
+tips.push(calcTip(bills[1]));
+tips.push(calcTip(bills[2]));
+
+const total = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+
+console.log(tips);
+console.log(total);
+
+const sum = [tips[0] + bills[0], tips[1] + bills[1], tips[2] + bills[2]];
+console.log(billAndTips);
