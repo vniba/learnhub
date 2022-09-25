@@ -63,7 +63,7 @@ console.log(ageJan, ageJon);
 console.log(averageAge);
  */
 
-// | coding challege #1
+// ? coding challege #1
 /*
 const markMass = 80;
 const johnMass = 100;

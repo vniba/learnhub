@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 /*
 let hasDiversEyes = false;
 const passTest = true;
@@ -170,23 +170,140 @@ if (friends.includes('angela')) {
 
 // ? coding challenge #2
 
-const bills = [125, 555, 44];
+// const bills = [125, 555, 44];
 
-const calcTip = (bill) =>
-	bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// const calcTip = (bill) =>
+// 	bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
 
-console.log(calcTip(100));
+// console.log(calcTip(100));
 
-let tips = [];
+// let tips = [];
 
-tips.push(calcTip(bills[0]));
-tips.push(calcTip(bills[1]));
-tips.push(calcTip(bills[2]));
+// tips.push(calcTip(bills[0]));
+// tips.push(calcTip(bills[1]));
+// tips.push(calcTip(bills[2]));
 
-const total = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+// const total = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 
-console.log(tips);
-console.log(total);
+// console.log(tips);
+// console.log(total);
 
-const sum = [tips[0] + bills[0], tips[1] + bills[1], tips[2] + bills[2]];
-console.log(billAndTips);
+// const sum = [tips[0] + bills[0], tips[1] + bills[1], tips[2] + bills[2]];
+// console.log(sum);
+
+// * object
+
+/* const jone = {
+	firstName: 'jone',
+	lastName: 'deo',
+	age: 28,
+	job: 'hecker',
+	friends: ['Curtis', 'Lubowitz', 'Santa', 'Thurman'],
+};
+
+console.log(jone);
+// dot and bracket notation
+
+// dot notaion
+console.log(jone.firstName);
+console.log(jone.age);
+ */
+// [] notation , we can use any expression
+/* const namea = 'Name';
+
+console.log(jone['first' + namea]);
+console.log(jone['lastName']);
+
+const interest = prompt(
+	'enter ur future ? enter ur fav words in these : alea , zieo , uios , voie '
+);
+ */
+//  use if dont know what value is in future
+
+/* const food = {
+	alea: 'no fking way u live',
+	zieo: 'money and drugs',
+	uios: 'rich with no ...',
+	voie: 'undead',
+};
+
+if (food[interest]) {
+	console.log(food[interest]);
+} else {
+	console.log('enter correct word');
+}
+ */
+
+/* jone.location = 'greek';
+console.log(jone);
+
+// ? small challenge
+const newSent = `${jone.firstName} has ${jone.friends.length} friends, and his best friend is called ${jone.friends[0]}`;
+
+console.log(newSent);
+ */
+
+/* const jone = {
+	firstName: 'jone',
+	lastName: 'deo',
+	birthYear: 2002,
+	isMarrid: true,
+	job: 'hecker',
+	friends: ['Curtis', 'Lubowitz', 'Santa', 'Thurman'],
+	calcAge: function () {
+		this.age = 2025 - this.birthYear;
+		return this.age;
+	},
+	// ? small challange
+	getSummary() {
+		return `${this.firstName} is a ${this.calcAge()}-year old ${
+			this.job
+		}, and he has ${this.isMarrid ? 'a' : 'no'} married`;
+	},
+};
+
+// ! use this 😀
+
+console.log(jone.calcAge()); // calling function once
+
+console.log(jone.age); // retrive data many time
+console.log(jone.age); // retrive data many time
+console.log(jone.age); // retrive data many time
+
+console.log(jone.getSummary()); */
+
+// ? coding challange #3
+
+const mark = {
+	fullName: "Mark Miller",
+	mass: 78,
+	height: 1.69,
+	calcBMI() {
+		this.bmi = this.mass / this.height ** 2;
+		return this.bmi;
+	},
+};
+
+const john = {
+	fullName: "John Smith",
+	mass: 92,
+	height: 1.95,
+	calcBMI() {
+		this.bmi = this.mass / this.height ** 2;
+		return this.bmi;
+	},
+};
+
+john.calcBMI();
+mark.calcBMI();
+console.log(john.bmi, mark.bmi);
+
+if (mark.bmi > john.bmi) {
+	console.log(
+		`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})`
+	);
+} else {
+	console.log(
+		`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})`
+	);
+}
