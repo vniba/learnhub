@@ -1,0 +1,34 @@
+.home {
+	background: var(--text-color) url('..//images/veg.jpg') center no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	.home-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 150px 0;
+		width: 100vw;
+		h1 {
+			font-size: 2.5rem;
+
+			span {
+				color: var(--primary-color);
+			}
+		}
+		p {
+			font-style: italic;
+			color: var(--dark-color);
+		}
+		.btn-home {
+			background-color: var(--primary-color);
+			color: var(--text-color);
+		}
+		.btn-home:hover {
+			color: var(--light-color);
+			opacity: 0.9;
+		}
+	}
+}
