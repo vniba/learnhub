@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /*
 let hasDiversEyes = false;
 const passTest = true;
@@ -41,7 +41,7 @@ console.log(calcAge2(2005));
  */
 
 // * Arrow function =>
-/*
+
 const output = (birthYear) => 2030 - birthYear;
 console.log(output(2010));
 
@@ -51,7 +51,6 @@ const retirement = (birthYear, firsName) => {
 };
 
 console.log(retirement(2010, 'jon'));
- */
 
 // * function calling other function
 
@@ -274,7 +273,7 @@ console.log(jone.getSummary()); */
 
 // ? coding challange #3
 
-const mark = {
+/* const mark = {
 	fullName: "Mark Miller",
 	mass: 78,
 	height: 1.69,
@@ -307,3 +306,124 @@ if (mark.bmi > john.bmi) {
 		`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})`
 	);
 }
+ */
+
+// *  loops
+// * for loops
+/*
+for (let rep = 1; rep <= 10; rep++) {
+	console.log(`lifting weights reps ${rep} 🤸‍♂️`);
+}
+*/
+
+const faker = [
+	'Chadrick',
+	'Olson',
+	2020 - 2037,
+	'Analyst',
+	['Madelyn', 'Jaycee', 'Kelli'],
+	false,
+];
+
+// loop through array
+/* const types = [] ;
+const typee = [];
+for (let i = 0; i < faker.length; i++) {
+	console.log(faker[i]);
+	types[i] = typeof faker[i];
+
+	typee.push(typeof faker[i]); // cleaner code
+}
+
+console.log(types);
+console.log(typee);
+ */
+/*
+const birthYears = [2002, 2008, 1893, 1999, 2050];
+const ages = [];
+
+for (let i = 0; i < birthYears.length; i++) {
+	ages.push(2055 - birthYears[i]);
+}
+
+console.log(ages);
+
+// continue & break
+console.log(faker);
+// only strings
+for (let index = 0; index < faker.length; index++) {
+	if (typeof faker[index] !== 'string') continue;
+	console.log(faker[index]);
+}
+
+console.log('-----------------');
+// break with number
+for (let index = 0; index < faker.length; index++) {
+	if (typeof faker[index] === 'number') break;
+	console.log(faker[index]);
+} */
+
+// loop back 🤚
+// for (let index = faker.length - 1; index >= 0; index--) {
+// 	console.log(faker[index]);
+// }
+
+//  loop in loop
+
+/* for (let exer = 1; exer <= 3; exer++) {
+	console.log(`--------staring exercise ${exer}`);
+	for (let rep = 1; rep <= 5; rep++) {
+		console.log(`exercise: ${exer} lifting weight rep ${rep} 🐈‍⬛`);
+	}
+} */
+
+// * while loop
+
+/* for (let index = 1; index < 5; index++) {
+	console.log(`lift rep ${index} 😈`);
+}
+
+let i = 1;
+while (i < 5) {
+	console.log(`lift rep ${i} 😀`);
+	i++;
+}
+ */
+
+/* let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+	console.log(`you rolled a ${dice} 🧊`);
+	dice = Math.trunc(Math.random() * 6) + 1;
+	if (dice === 6) console.log(`process exiting code 09`);
+}
+ */
+
+// ? coding challenge #4
+
+/* const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+const calcTip = (bill) =>
+	bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+for (let index = 0; index < bills.length; index++) {
+	tips.push(calcTip(bills[index]));
+	for (let i = index; i <= index; i++) {
+		totals.push(calcTip(bills[index]) + bills[index]);
+	}
+}
+
+console.log(tips);
+console.log(totals);
+
+const calcAverage = function average(arr) {
+	let sum = 0;
+	for (let index = 0; index < arr.length; index++) {
+		sum += arr[index];
+	}
+	return sum / arr.length;
+};
+
+console.log(calcAverage(totals)); */
