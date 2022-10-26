@@ -16,6 +16,13 @@
 
 ---
 
+### dom 🦖
+
+`innerHtml, querySelector(), write(), alert(), print(), textContent, document, value, parseInt, style, querySelectorAll(), classList, remove(), add(), contains()`
+
+---
+
 **💚Project :**
 
-- Guess my number
+1. **Guess my number**
+2. **Modal Window**
