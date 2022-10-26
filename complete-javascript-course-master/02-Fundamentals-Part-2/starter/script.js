@@ -42,7 +42,7 @@ console.log(calcAge2(2005));
 
 // * Arrow function =>
 
-const output = (birthYear) => 2030 - birthYear;
+const output = birthYear => 2030 - birthYear;
 console.log(output(2010));
 
 const retirement = (birthYear, firsName) => {
@@ -426,4 +426,19 @@ const calcAverage = function average(arr) {
 	return sum / arr.length;
 };
 
-console.log(calcAverage(totals)); */
+console.log(calcAvecrage(totals)); */
+
+// ? coding challenge #5
+
+const arr = [17, 21, 23];
+
+printForecast(arr);
+
+function printForecast(array) {
+	let value = 0;
+	for (const iterator of array) {
+		value = iterator;
+		console.log(value);
+	}
+	console.log(value);
+}
