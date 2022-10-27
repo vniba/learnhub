@@ -18,7 +18,7 @@
 
 ### dom 🦖
 
-`innerHtml, querySelector(), write(), alert(), print(), textContent, document, value, parseInt, style, querySelectorAll(), classList, remove(), add(), contains()`
+`innerHtml, querySelector(), write(), alert(), print(), textContent, document, value, parseInt, style, querySelectorAll(), classList, remove(), add(), contains(), src, toggle()`
 
 ---
 
@@ -26,3 +26,4 @@
 
 1. **Guess my number**
 2. **Modal Window**
+3. **Pig game**
