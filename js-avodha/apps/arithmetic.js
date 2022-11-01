@@ -111,6 +111,7 @@ console.log(three); */
 //  == loose equel to => only check for value
 //  ===  strict equel to => check both value and datatypes
 // not equel to !=   => it return false if conditon is true
+//  not strict !==
 // > greate than
 // < less than
 // <= lessthan or equelto
@@ -123,6 +124,31 @@ console.log(x === y);
 console.log(x != y);
 console.log(x !== y); */
 
-let x = 5;
-let y = 22;
-console.log(x <= y);
+// let x = 5;
+// let y = 22;
+// console.log(x <= y);
+
+// * logical => true or false
+// && , || , !
+// && return true only when two condition is true
+// || true when one conditon is true
+//  return oposite !
+
+// let c = 10;
+// let d = 5;
+// console.log(!c > d || c < 0);
+
+//     operands 1   operands 2   &&      ||     !
+//    true           true     true     true    false
+//    true           false    false    true    --
+//    false          true     false    true    --
+//    false          false    false    false  true
+
+console.log(10 > 20 || 10 >= '0');
+console.log(1 === '1');
+console.log(3 !== '3');
+console.log(1.0 === 1);
+console.log(2 + (2 * 4) / 2 - 10);
+console.log(2 ** 2 + 10 / 2);
+
+console.log(!2 === 2);
