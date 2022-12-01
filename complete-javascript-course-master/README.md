@@ -27,3 +27,7 @@
 1. **Guess my number**
 2. **Modal Window**
 3. **Pig game**
+
+---
+
+**Data-structure 🎏 :** `destructring array and objects, REST operator, Spread Operator`
