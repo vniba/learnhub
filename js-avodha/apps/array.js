@@ -75,3 +75,46 @@ console.log(Array.isArray(fruits)); //Array.isArray()
 
 const fake = {};
 console.log(Array.isArray(fake));
+
+//! array Methods
+
+// split
+let dummy = 'a,b,c,d';
+const dummyArray = dummy.split(',');
+console.log(dummyArray);
+
+// array elements to string
+// toString()
+const veg = ['carrot 🥕', 'onion 🧅', 'borcoli 🥦'];
+console.log(veg.toString());
+
+// join()
+console.log(veg.join(' '));
+
+const days = ['sun', 'mon', 'tue', 'wed', 'fri', 'thu'];
+
+// pop() - remove element in end
+days.pop();
+console.log(days);
+
+//  shift() - remove element in start
+days.shift();
+console.log(days);
+
+// unshift()
+days.unshift('sun');
+console.log(days);
+
+// to change element
+// splice()
+days.splice(4, 0, 'thu');
+console.log(days);
+
+// to merge multiple array
+// concat()
+const year = [2010, 2011, 2012];
+const year2 = [2013, 2014, 2015];
+const yea = [2016, 2017, 2018];
+
+const year3 = year.concat(year2, yea, 2019);
+console.log(year3);
