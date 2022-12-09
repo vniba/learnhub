@@ -197,3 +197,118 @@ ad(...xx);
 restaurant.orderPizza('mushrooms', 'LSD', 'DMT', 'spinach');
 
 restaurant.orderPizza('cannabi');
+
+// use any data types , return any data types
+// short-circuiting
+console.log(2 || 'eun') // first value returns
+console.log('' || 'yen')
+console.log(undefined || null)
+
+restaurant.numGuests = 0
+const guest1 = restaurant.numGuests ? restaurant.numGuests : 20
+console.log(guest1);
+
+const guest2 = restaurant.numGuests || 30
+console.log(guest2);
+console.log(10 && 'hello');
+console.log('' && undefined);
+console.log(10 && null && '');
+
+// es2020 nullish coalescing
+// nullish: undefined & null
+const guestError = restaurant.numGuests ?? 20
+console.log(guestError);
+
+// logical assignment operator - es2021
+const rest1 = {
+  name: 'Mrs.',
+  numGuests: 0
+}
+const rest2 = {
+  name: 'Mr.',
+  ceo: 'Natalia'
+}
+// rest2.numGuests = rest2.numGuests || 11
+// rest1.numGuests = rest1.numGuests || 11
+
+// or assignment operator ||=
+// rest1.numGuests ||= 11
+// rest2.numGuests ||= 11
+
+rest1.numGuests ??= 11
+rest2.numGuests ??= 11
+rest2.ceo &&= '<anonymous>'
+rest1.ceo &&= '<anonymous>'
+console.log(rest1, rest2);
+
+// coding challenge #1 💙
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 11.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+// destructuring players array
+const [players1, players2] = game.players
+
+// destructuring gk and fieldPlayers
+const [gk, fieldPlayers] = players1
+
+//allPlayers array
+const allPlayers = [...players1, ...players1]
+
+//team1 final players
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'perisic']
+
+// nesting destructuring
+let { odds: { team1, x: draw, team2 } } = game
+
+// print players name and no of goals
+const printGoals = function (...players) {
+  console.log(`${players.length} goals scored ${players}`);
+}
+
+printGoals(...game.scored)
+
+// which team more likely to win
+team1 < team2 && console.log('Team 1 more likely win');
+team1 > team2 && console.log('Team 2 more likely win');
+console.log(allPlayers, players1Final);
+console.log(gk);
+console.log(team1, draw, team2);
+console.clear();
