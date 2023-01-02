@@ -22,7 +22,8 @@
     <!-- <script src="./apps/iterables.js" defer></script> -->
     <!-- <script src="/apps/typeOfOperator.js" defer></script> -->
     <!-- <script src="/apps/regex.js" defer></script> -->
-    <script src="./apps/scope.js" defer></script>
+    <!-- <script src="./apps/scope.js" defer></script> -->
+    <script src="./apps/this.js" defer></script>
   </head>
 
   <body>
@@ -34,7 +35,7 @@
       click me
     </button>
     <p id="demo">RESULT:</p>
-    <button id="btn" onclick="clix()">RUN</button>
+    <button id="btn" onclick="this.style.color='red',console.log(this)">RUN</button>
     <input type="text" id="age" class="age" value="10" placeholder="20" />
     <p id="here">output:</p>
     <!-- <p class="params">
