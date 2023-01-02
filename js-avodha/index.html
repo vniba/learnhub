@@ -23,7 +23,8 @@
     <!-- <script src="/apps/typeOfOperator.js" defer></script> -->
     <!-- <script src="/apps/regex.js" defer></script> -->
     <!-- <script src="./apps/scope.js" defer></script> -->
-    <script src="./apps/this.js" defer></script>
+    <!-- <script src="./apps/this.js" defer></script> -->
+    <script src="/apps/error.js" defer></script>
   </head>
 
   <body>
@@ -31,13 +32,13 @@
     <!-- <p id="demo">seriation</p>
 		<button onclick="console.log(`she clicked`)">login</button>
 		<button onclick="window.print()">print</button> -->
-    <button class="hello" onclick="document.querySelector('#demoOne').innerHTML='duroW ollaH',console.log('')">
+    <!-- <button class="hello" onclick="document.querySelector('#demoOne').innerHTML='duroW ollaH',console.log('')">
       click me
     </button>
     <p id="demo">RESULT:</p>
     <button id="btn" onclick="this.style.color='red',console.log(this)">RUN</button>
     <input type="text" id="age" class="age" value="10" placeholder="20" />
-    <p id="here">output:</p>
+    <p id="here">output:</p> -->
     <!-- <p class="params">
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi,
 			consequuntur?
@@ -46,6 +47,19 @@
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi,
 			consequuntur?
 		</p> -->
+    <form action="">
+      <input type="text" id="demo">
+      <button id="btn">click me</button>
+    </form>
+    <br>
+    <form action="" method="post">
+      <label for="name">First Name:</label>
+      <input type="text" id="name"><br>
+      <label for="age">Age:</label>
+      <input type="text" id="age"><br>
+      <button type="button" id="submit">submit</button>
+    </form>
+    <h1 id="show">_______________</h1>
   </body>
 
 </html>
