@@ -44,7 +44,6 @@ console.table(numbers);
 console.log(numbers.negative['one']);
 
 // nested array
-console.clear();
 const phonePurchase = {
   name: "redMagic",
   year: 2022,
@@ -60,3 +59,60 @@ const phonePurchase = {
   ]
 }
 console.log(phonePurchase.users[0]);
+
+
+const book = {
+  name: 'the count of monte cristo',
+  author: 'alexander dumas',
+  ratings: 4,
+  Metadata() {
+    return `${this.name} written by ${this.author}`
+  }
+}
+console.log(book);
+
+console.log(book.Metadata());
+
+// adding method
+book.story = function () {
+  return `${this.name}: is taking about Qui id architecto aut deserunt.`
+}
+console.log(book.story());
+
+console.clear();
+
+// display in document
+const output = document.querySelector('#demoOne')
+output.innerHTML = book.Metadata()
+
+let show = ''
+for (const key in user) {
+  ;
+  show += `${user[key]} ✌️`
+}
+output.innerHTML = show
+
+let look = Object.values(user)
+output.innerHTML = look
+console.log(look);
+
+// JSON.stringify -- js values to JSON
+
+let jsStr = JSON.stringify(user)
+console.log(jsStr);
+
+const dates = {
+  name: 'date',
+  date: new Date(),
+  current() {
+    return this.name + this.date('day')
+  }
+}
+console.log(dates);
+
+let dateStr = JSON.stringify(dates)
+output.innerHTML = dateStr
+
+const forces = ['weak', 'strong', 'gravity', 'electromagnetic', 0]
+
+output.innerHTML = JSON.stringify(forces)

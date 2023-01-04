@@ -1,6 +1,8 @@
 body {
   background-color: grey;
+  font-size: .5rem;
 }
+
 #demo {
   color: lavender;
 }
