@@ -79,7 +79,6 @@ book.story = function () {
 }
 console.log(book.story());
 
-console.clear();
 
 // display in document
 const output = document.querySelector('#demoOne')
@@ -116,3 +115,29 @@ output.innerHTML = dateStr
 const forces = ['weak', 'strong', 'gravity', 'electromagnetic', 0]
 
 output.innerHTML = JSON.stringify(forces)
+
+// js object accessors
+// Set Get
+console.clear();
+
+const movies = {
+  name: 'prey',
+  year: 2022,
+  lang: 'english',
+  boxOffice: 0,
+  get data() {
+    return `${this.name.toUpperCase()} released in ${this.year} in ${this.lang} language`
+
+  },
+  set ids(value) {
+    this.boxOffice = value
+  }
+}
+
+console.log(movies.data);
+console.log(movies);
+
+movies.ids = 1000
+console.log(movies);
+
+
