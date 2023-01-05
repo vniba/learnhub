@@ -154,3 +154,14 @@ function Interest(name, income, month) {
 const firstIntr = new Interest('Marvin', 10000, 6);
 
 console.log(firstIntr);
+
+// prototype
+console.log(firstIntr.__proto__);
+console.log(Interest.prototype);
+
+Interest.prototype.discount = 200
+console.log(firstIntr.discount);
+Interest.prototype.show = () => `laboriosam itaque autem`
+
+console.log(firstIntr.show());
+
