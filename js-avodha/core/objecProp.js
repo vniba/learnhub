@@ -118,7 +118,6 @@ output.innerHTML = JSON.stringify(forces)
 
 // js object accessors
 // Set Get
-console.clear();
 
 const movies = {
   name: 'prey',
@@ -140,4 +139,18 @@ console.log(movies);
 movies.ids = 1000
 console.log(movies);
 
+console.clear();
 
+// constructor function
+function Interest(name, income, month) {
+  this.name = name
+  this.income = income
+  this.month = month
+  this.tax = function () {
+    return this.income * this.month / 1.5
+  }
+}
+
+const firstIntr = new Interest('Marvin', 10000, 6);
+
+console.log(firstIntr);
