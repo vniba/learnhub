@@ -139,7 +139,6 @@ console.log(movies);
 movies.ids = 1000
 console.log(movies);
 
-console.clear();
 
 // constructor function
 function Interest(name, income, month) {
@@ -164,4 +163,28 @@ console.log(firstIntr.discount);
 Interest.prototype.show = () => `laboriosam itaque autem`
 
 console.log(firstIntr.show());
+
+
+// Set --> collection of unique values
+const smallLet = new Set(['a', 'b', 'dd', 'c', 'd', 'a'])
+console.log(smallLet);
+
+const smallLets = new Set()
+const flower = ['fire lilly', 'fire lilly']
+console.log(flower.values());
+
+// maps
+console.clear();
+const mapping = new Map([
+  ['seven up', 35],
+  ['fruit delight', 20],
+  ['fiz', 15],
+  [100, 'hundred']
+]);
+
+console.log(mapping);
+console.log(mapping.has('fiz'))
+console.log(mapping.get(100));
+mapping.set(true, false)
+console.log(mapping);
 
