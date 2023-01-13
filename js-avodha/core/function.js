@@ -75,7 +75,6 @@ function total(a, b = 0) {
 }
 console.log(total(10));
 
-console.clear();
 
 function maxe() {
   let max = -Infinity;
@@ -97,3 +96,87 @@ function sumAll() {
   return sum;
 }
 console.log(sumAll(90, 70, 10));
+
+function hellos(a, z) {
+  return a - z;
+}
+
+console.log(window.hellos(10, 2));
+
+const diary = {
+  name: 'hellos',
+  killer: true,
+  full() {
+    return this;
+  }
+};
+console.log(diary.full());
+
+// constructor
+function Continent(name, population) {
+  this.name = name;
+  this.population = population;
+}
+
+const spellIt = new Continent('asia', 330);
+console.log(spellIt);
+
+// call method
+const jewels = {
+  ring: 'diamond',
+  watch: 'gold'
+  , jewelz(name) {
+    return `${name}'s jewels are ${this.ring} ring & ${this.watch} watch`;
+  }
+};
+
+const jewels2 = {
+  ring: 'gold',
+  watch: 'steel'
+};
+
+console.log(jewels.jewelz('azure'));
+console.log(jewels.jewelz.call(jewels2, 'loki'));
+
+//apply
+const jewels3 = {
+  ring: 'platinum',
+  watch: 'led'
+};
+console.log(jewels.jewelz.apply(jewels3, ['Vernice']));
+
+
+const sums = Math.max.apply(null, [1, 2, 34, 3]);
+console.log(sums);
+console.clear();
+
+const plant = {
+  name: 'cactus',
+  lifeSpan: 1000,
+
+  bioData() {
+    return `${this.name} has life Span of ${this.lifeSpan} years`;
+  }
+};
+const plant2 = {
+  name: 'coconut tree',
+  lifeSpan: 50
+};
+
+const plants = plant.bioData.bind(plant2);
+console.log(plants());
+
+const watter = {
+  name: 'mixed fruit',
+  quantity: 180
+  ,
+  label() {
+    let xz = document.querySelector('#demoOne').innerHTML = this.name + ' ' + this.quantity;
+  }
+};
+
+// setTimeout(() => {
+//   watter.label();
+// }, 3000);
+const out = watter.label.bind(watter);
+setTimeout(out, 3000);
