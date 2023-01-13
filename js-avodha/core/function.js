@@ -148,7 +148,6 @@ console.log(jewels.jewelz.apply(jewels3, ['Vernice']));
 
 const sums = Math.max.apply(null, [1, 2, 34, 3]);
 console.log(sums);
-console.clear();
 
 const plant = {
   name: 'cactus',
@@ -171,7 +170,7 @@ const watter = {
   quantity: 180
   ,
   label() {
-    let xz = document.querySelector('#demoOne').innerHTML = this.name + ' ' + this.quantity;
+    let xz = document.querySelector('#demoOne').innerHTML = `${this.name} ${this.quantity}`;
   }
 };
 
@@ -180,3 +179,31 @@ const watter = {
 // }, 3000);
 const out = watter.label.bind(watter);
 setTimeout(out, 3000);
+
+console.clear();
+
+// function closures
+// --< global variable to local variable
+const queen = 20;//-global
+function ant() {
+  let queen = 1;//-local
+  console.log(queen);
+}
+ant();
+
+function moneyPlant() {
+  console.log(queen * 100);
+
+}
+moneyPlant();
+
+(function adds() {
+  let counter = 0;
+  function h2o() {
+    counter += 1;
+    return counter;
+  }
+  console.log(counter);
+
+}());
+
