@@ -375,8 +375,6 @@ const user = [{ name: 'elle', age: 20 }];
 
 console.log(user[0]?.name ?? 'user array empty');
 
-console.clear();
-
 // coding challenge no #2 🔴
 // ----- 1 --------
 for (const [num, iterator] of game.scored.entries()) {
@@ -396,3 +394,112 @@ for (const [key, odd] of Object.entries(game.odds)) {
   const teamStr = key === 'x' ? 'draw' : game[key];
   console.log(`Odd of victory ${teamStr}: ${odd}`);
 }
+
+console.clear();
+
+// Sets --> unique
+const ordersSet = new Set([
+  'laptop',
+  'penDrive',
+  'sdCard',
+  'Ram',
+  'Cable',
+  'Ram',
+  'laptop',
+]);
+
+console.log(ordersSet);
+
+const strSet = new Set('hello');
+console.log(strSet);
+
+// to get Size
+console.log(ordersSet.size);
+
+//to check value has includes
+console.log(ordersSet.has('Cable'));
+// to add
+ordersSet.add('pc');
+// to delete
+ordersSet.delete('Ram');
+// to delete all elements in set
+// ordersSet.clear();
+console.log(ordersSet);
+
+for (const order of ordersSet) {
+  console.log(order);
+}
+// eg:
+const staff = ['waiter', 'chef', 'waiter', 'manager', 'chef', 'taster'];
+//set to array
+const staffSet = [...new Set(staff)];
+console.log(staffSet);
+
+console.log(new Set('Et sed quas').size);
+
+// Maps
+const rests = new Map();
+rests.set('name', 'la Lulla');
+rests.set(1, 'mississippi');
+console.log(rests);
+
+rests
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 9)
+  .set('close', 21)
+  .set(true, 'we r open')
+  .set(false, 'we r closed');
+
+console.log(rests);
+console.log(rests.get(1));
+
+const time = new Date();
+const result = rests.get(
+  time.getHours() > rests.get('open') && time.getHours() < rests.get('close')
+);
+console.log(result);
+
+console.log(rests.has('name'));
+console.log(rests.has('age'));
+// to delete
+rests.delete(1);
+console.log(rests);
+//get size
+console.log(rests.size);
+//  array as key
+const arr = [10, 30];
+rests.set(arr, 'random');
+console.log(rests.get(arr));
+// tag as key
+rests.set(document.querySelector('h1'), 'heading');
+console.log(rests);
+console.clear();
+
+const question = new Map([
+  ['question', 'What is the best programming language?'],
+  [1, 'c'],
+  [2, 'java'],
+  [3, 'javaScript'],
+  [4, 'python'],
+  ['correct', 3],
+  [true, 'Correct'],
+  [false, 'tyr again'],
+]);
+
+console.log(question);
+// convert obj to map
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
+console.log(hoursMap);
+
+// iterating over map
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(key, value);
+}
+
+// map to array
+console.log([...question]);
+
+console.log(question.entries());
+console.log(...question.keys());
+console.log(...question.values());
