@@ -31,7 +31,6 @@ function man() {
 man();
 woman();
 
-console.clear();
 // callback function eg:
 const demo = document.querySelector('#demoOne');
 
@@ -53,3 +52,30 @@ function calcs(a, b, func) {
 }
 
 calcs(40, 12, showAnswer);
+
+
+// asynchronous function
+// --> function running parallel with another function
+
+
+function delay(a) {
+  console.log('running 💨💨' + a);
+}
+setTimeout(delay, 3000);
+
+// callback
+setTimeout(() => {
+  delay('2s');
+}, 2000);
+
+console.clear();
+
+// setInterval
+function dates() {
+  const dat = new Date();
+  demo.innerHTML = `${dat.getHours()} : ${dat.getMinutes()}: ${dat.getSeconds()}`;
+}
+
+setInterval(() => {
+  dates();
+}, 1000);
