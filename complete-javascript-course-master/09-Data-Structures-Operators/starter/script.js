@@ -569,8 +569,6 @@ checkMiddleSeat('3D');
 
 console.log(typeof new String('hello').slice(2));
 
-console.clear();
-
 console.log(airLine.toLowerCase());
 console.log(airLine.toUpperCase());
 
@@ -608,3 +606,80 @@ const planeNew = 'X20BlUE';
 console.log(planeNew.includes('X20'));
 console.log(planeNew.startsWith('20', 1));
 console.log(planeNew.endsWith('20', 1));
+
+// workout
+const checkBag = function (items) {
+  const itemLow = items.toLowerCase();
+  if (itemLow.includes('gun') || itemLow.includes('gold')) {
+    console.log('danger 💀');
+  } else {
+    console.log('clear 🟢');
+  }
+};
+checkBag('laptop, gun, ecstasy');
+checkBag('cheese, plant, gold');
+checkBag('cheese, plant, book');
+
+const rand = 'a-b-c-d-e';
+console.log(rand.split('-'));
+
+const [firstName, LastName] = 'jon doe'.split(' ');
+console.log(firstName, LastName);
+
+const nN = ['mr', firstName, LastName.toUpperCase()].join(' ');
+console.log(nN);
+
+function capitalizeName(name) {
+  const nArr = [];
+  const nameNew = name.toLowerCase().split(' ');
+  for (const iterator of nameNew) {
+    nArr.push(iterator.replace(iterator[0], iterator[0].toUpperCase()));
+  }
+  return nArr.join(' ');
+}
+console.log(capitalizeName('modesto camille sharon'));
+
+// padding a string
+const msg = 'go to exit 31';
+console.log(msg.padStart(20, '-').padEnd(30, '-'));
+
+function masking(num) {
+  const str = num + '';
+  const show = str.slice(-4);
+  return show.padStart(str.length, '*');
+}
+console.log(masking(8071432306071432));
+console.log(masking(83628641236286));
+
+// repeat
+const whether = 'Bad whether... All Departures delayed! ';
+
+console.log(whether.repeat(2));
+
+console.clear();
+
+// coding challenge #4 💙
+/*
+ underscore_case
+first_name
+ Some_Variable
+calculate_AGE
+delayed_departure */
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+// -------- 1 ---------
+
+document.querySelector('button').addEventListener('click', () => {
+  const text = document.querySelector('textarea').value;
+  const textLow = text.toLowerCase().split('\n');
+  for (const [i, j] of textLow.entries()) {
+    const [first, second] = j.toLowerCase().trim().split('_');
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+
+    console.log(`${output.padEnd(20)}${'🪅'.repeat(i + 1)}`);
+  }
+});
