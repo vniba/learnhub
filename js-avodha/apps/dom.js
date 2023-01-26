@@ -1,16 +1,16 @@
 'use strict';
 
-const demo = document.querySelector('#demoOne');
-demo.innerHTML = 'DOM 📄';
+// const demo = document.querySelector('#demoOne');
+// demo.innerHTML = 'DOM 📄';
 
-demo.style.color = '#0ff';
-demo.style.fontSize = '3rem';
+// demo.style.color = '#0ff';
+// demo.style.fontSize = '3rem';
 
-const btn = document.getElementsByTagName('button');
+// const btn = document.getElementsByTagName('button');
 
-btn[0].innerHTML = 'changed';
+// btn[0].innerHTML = 'changed';
 
-document.querySelector('button').style.backgroundColor = 'blue';
+// document.querySelector('button').style.backgroundColor = 'blue';
 
 // const butt = document.querySelector('#btnz');
 // butt.addEventListener('click', () => {
@@ -24,7 +24,7 @@ document.querySelector('button').style.backgroundColor = 'blue';
 // to find element  -> id, tag, class
 // by css selector
 
-let boxed = document.querySelectorAll('#box h1');
+// let boxed = document.querySelectorAll('#box h1');
 
 // boxed[0].style.color = 'yellow';
 
@@ -36,19 +36,42 @@ let boxed = document.querySelectorAll('#box h1');
 // document.querySelector('#param').innerHTML = Date();
 
 // for creating element
-const sub = document.createElement('h3');
+// const sub = document.createElement('h3');
 
-document.body.style.backgroundColor = 'green';
-console.log(document.body);
-console.clear();
+// document.body.style.backgroundColor = 'green';
+// console.log(document.body);
+// console.clear();
 
 // form function
-function validateForm() {
-  const form = document.forms[1]['fname'].value;
-  if (form === '') {
-    alert('name is empty');
-    return false;
-  }
-  console.log(form);
+// function validateForm() {
+//   const form = document.forms[1]['fname'].value;
+//   if (form === '') {
+//     alert('name is empty');
+//     return false;
+//   }
+//   console.log(form);
 
+// }
+
+const show = document.querySelector('#show');
+
+
+const btns = document.querySelector('#btns');
+btns.addEventListener('click', move);
+
+function move() {
+  let id = null;
+  const child = document.querySelector('#animate');
+  let pos = 0;
+  clearInterval(id);
+  id = setInterval(frame, 5);
+  function frame() {
+    if (pos === 150) {
+      clearInterval(id);
+    }
+    else {
+      pos++;
+      child.style.top = pos + 'px';
+    }
+  }
 }
