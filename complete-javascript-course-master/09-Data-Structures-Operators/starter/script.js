@@ -518,7 +518,6 @@ const gameEvents = new Map([
   [80, '⚽️ GOAL'],
   [92, '🔶 Yellow card'],
 ]);
-console.clear();
 
 // ----------- 1 ------------
 const events = [...new Set(gameEvents.values())];
@@ -537,3 +536,75 @@ for (const [key, value] of gameEvents) {
   let str = key <= 45 ? 'First' : 'Second';
   console.log(`[${str} Half] ${key} : ${value}`);
 }
+
+const airLine = 'Emirates of moon';
+const plane = 'F202';
+console.log(plane[1]);
+console.log(airLine[3]);
+console.log(airLine.length);
+
+console.log(airLine.indexOf('s'));
+console.log(plane.lastIndexOf('2'));
+
+console.log(airLine.indexOf('at'));
+
+console.log(airLine.slice(8));
+console.log(airLine.slice(0, 8));
+
+console.log(airLine.slice(0, airLine.indexOf(' ')));
+console.log(airLine.slice(airLine.lastIndexOf(' ') + 1));
+
+console.log(airLine.slice(-8));
+
+// b & e are middle seats
+const checkMiddleSeat = function (seat) {
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'C') {
+    console.log(`you got the middle seat 😢`);
+  } else console.log(`you got  lucky `);
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('3D');
+
+console.log(typeof new String('hello').slice(2));
+
+console.clear();
+
+console.log(airLine.toLowerCase());
+console.log(airLine.toUpperCase());
+
+// fix capitalization
+function fixCap(name) {
+  const passengerLower = name.toLowerCase();
+  const passengerCap =
+    passengerLower[0].toUpperCase() + passengerLower.slice(1);
+  return passengerCap;
+}
+console.log(fixCap('tHanOs'));
+
+// check email
+const email = 'Rodrigo_Walter77@yahoo.com';
+const loginEmail = ' RodRiGo_WAlTTr77@YaHoo.Com ';
+
+const normalizeEmail = loginEmail.toLowerCase().trim();
+console.log(normalizeEmail);
+
+// replacing
+const priceAnt = '34,000$';
+const priceYn = priceAnt.replace('$', '¥').replace(',', '_');
+console.log(priceYn);
+
+const announcement =
+  'All passengers come to boarding door 20, boarding door 25';
+
+console.log(announcement.replaceAll('door', 'gate'));
+
+// regex
+console.log(announcement.replaceAll(/doOr/gi, 'gate'));
+
+// booleans
+const planeNew = 'X20BlUE';
+console.log(planeNew.includes('X20'));
+console.log(planeNew.startsWith('20', 1));
+console.log(planeNew.endsWith('20', 1));
