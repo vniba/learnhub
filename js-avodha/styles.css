@@ -6,3 +6,14 @@ body {
 #demo {
   color: lavender;
 }
+
+.btns {
+  font-size: 2rem;
+  color: deeppink;
+}
+
+.hello {
+  height: 100px;
+  width: 100px;
+  background-color: lawngreen;
+}
