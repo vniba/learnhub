@@ -1,8 +1,6 @@
 'use strict';
 
 // Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 const weekday = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const closingHours = {
@@ -656,8 +654,6 @@ const whether = 'Bad whether... All Departures delayed! ';
 
 console.log(whether.repeat(2));
 
-console.clear();
-
 // coding challenge #4 💙
 /*
  underscore_case
@@ -683,3 +679,22 @@ document.querySelector('button').addEventListener('click', () => {
     console.log(`${output.padEnd(20)}${'🪅'.repeat(i + 1)}`);
   }
 });
+
+// console.clear();
+
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+const flightsNew = flights.split('+');
+for (const iterator of flightsNew) {
+  const [type, from, to, time] = iterator.split(';');
+  const label = type.includes('Delayed') ? '🟥' : ' ';
+  console.log(
+    `${label} ${type.replaceAll('_', ' ')} from ${from
+      .slice(0, 3)
+      .toUpperCase()} to ${to.slice(0, 3).toUpperCase()} (${time.replace(
+      ':',
+      'h'
+    )})`.padStart(55)
+  );
+}
