@@ -1,4 +1,7 @@
 'use strict';
+
+// import { head } from '../../17-Modern-JS-Modules-Tooling/final/dist/script.0b6e4fd3';
+
 const bookings = [];
 
 // default params
@@ -62,7 +65,7 @@ transformer('python is the one', upperFirst);
 transformer('python is the one', oneWord);
 
 function High5() {
-  console.log('😀');
+  // console.log('😀');
 }
 
 document.body.addEventListener('click', High5);
@@ -131,8 +134,6 @@ bookEc(49, 'angeline lo');
 const bookEc34 = book.bind(escrowing, 34);
 bookEc34('mariana sun');
 
-console.clear();
-
 // With event listeners
 lufthansa.planes = 148;
 lufthansa.buyPlane = function () {
@@ -158,3 +159,102 @@ console.log(addVAT(100));
 const addTAX = value => rate => value + value * rate;
 
 console.log(addTAX(100)(0.5));
+
+// coding challenge # 1 ⚡
+
+const poll = {
+  question: 'What is your favorite programming language?',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+  // This generates [0, 0, 0, 0]. More in the next section 😃
+  answers: new Array(4).fill(0),
+  registerNewAnswer() {
+    const ans = parseInt(
+      prompt(
+        `${this.question}\n${this.options.join('\n')}\n write option number`
+      )
+    );
+    // register the answer
+    if (ans < this.answers.length && ans === 'number') {
+      alert('wrong num');
+    } else {
+      this.answers[ans]++;
+    }
+    this.displayResults();
+  },
+  displayResults(type = 'array') {
+    typeof type == 'object'
+      ? console.log(type)
+      : console.log(`Poll results are ${this.answers.join(', ')}`);
+  },
+};
+
+console.log(poll);
+
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+console.clear();
+
+// IIFE -- Immediately invoked function expression
+// self invoking function
+(function () {
+  console.log('no ooo');
+})();
+
+(() => console.log('IIFE'))();
+
+// closures
+const secureBooking = function () {
+  let passengerCount = 0;
+  return function () {
+    return function () {
+      passengerCount++;
+      console.log(passengerCount);
+    };
+  };
+};
+const booker = secureBooking();
+booker()();
+booker()();
+
+let n;
+const gene = function () {
+  const helix = 2;
+  n = function () {
+    console.log(helix * 10);
+  };
+};
+
+const h = function () {
+  const b = 20;
+  n = function () {
+    console.log(b * 10);
+  };
+};
+gene();
+n();
+
+h();
+n();
+
+// 2
+const boardPassengers = function (num, waitTime) {
+  const perGroup = num / 3;
+
+  setTimeout(() => {
+    console.log(`we are now boarding all ${num} passengers`);
+    console.log(`there are 3 groups, each with ${perGroup} passengers`);
+  }, waitTime * 1000);
+  console.log(`will start boarding in ${waitTime} seconds`);
+};
+const perGroup = 802;
+
+boardPassengers(102, 3);
+
+// coding challenge # 2 ⚡
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'blue';
+  document.body.addEventListener('click', () => (header.style.color = 'red'));
+})();

@@ -22,3 +22,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 jsconfig.json
+vscode
+settings.json
