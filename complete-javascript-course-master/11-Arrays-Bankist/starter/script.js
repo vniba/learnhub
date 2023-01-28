@@ -125,3 +125,21 @@ movements.forEach((a, i, array) => {
   // console.log(array);
 });
 // break and continue not work 👆
+
+// coding challenge #1
+const julia = [3, 5, 2, 12, 7];
+const kate = [4, 1, 15, 8, 3];
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const juliaDogs = dogsJulia.slice(1, -2);
+  const dogsArray = juliaDogs.concat(dogsKate);
+
+  return dogsArray.forEach((value, index) => {
+    const kind = value > 3 ? 'adult' : 'puppy 🐶';
+    console.log(
+      `Dog number ${index + 1} is an ${kind} and it is ${value} years old`
+    );
+  });
+};
+
+checkDogs(julia, kate);
