@@ -179,7 +179,6 @@ console.log(depositsFor);
 
 const withdrawals = movements.filter(val => val < 0);
 console.log(withdrawals);
-console.clear();
 
 // Reduce method
 const sumMovements = movements.reduce((acc, curr) => acc + curr, 0);
@@ -190,3 +189,31 @@ for (const val of movements) {
   total += val;
 }
 console.log(total);
+
+// max value
+const maxMovement = movements.reduce(
+  (pre, cur) => (pre > cur ? pre : cur),
+  movements.at(0)
+);
+console.log(maxMovement);
+
+// coding challenge # 2
+const data = [5, 2, 4, 1, 15, 8, 3];
+
+const calcAvgHumanAge = function (ages) {
+  const human = ages
+    .map(age => (age <= 2 ? 2 * age : 16 + 4 * age))
+    .filter(age => age >= 18)
+    .reduce((acc, age, _, arr) => acc + age / arr.length, 0);
+  return human;
+};
+console.log(calcAvgHumanAge(data));
+
+console.clear();
+
+const sumDepositsUsd = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, cur) => acc + cur, 0);
+
+console.log(sumDepositsUsd);
