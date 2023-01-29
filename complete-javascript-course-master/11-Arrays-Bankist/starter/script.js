@@ -157,8 +157,6 @@ for (const move of movements) {
 }
 console.log(moveUsdFor);
 
-console.clear();
-
 const moveDes = movements.map((value, index) => {
   return value > 0
     ? `${index + 1} you deposited ${value}💲`
@@ -166,3 +164,29 @@ const moveDes = movements.map((value, index) => {
 });
 
 console.log(moveDes);
+
+// filter
+const deposits = movements.filter(val => val > 0);
+console.log(deposits);
+
+const depositsFor = [];
+for (const mov of movements) {
+  if (mov > 0) {
+    depositsFor.push(mov);
+  }
+}
+console.log(depositsFor);
+
+const withdrawals = movements.filter(val => val < 0);
+console.log(withdrawals);
+console.clear();
+
+// Reduce method
+const sumMovements = movements.reduce((acc, curr) => acc + curr, 0);
+console.log(sumMovements);
+
+let total = 0;
+for (const val of movements) {
+  total += val;
+}
+console.log(total);
