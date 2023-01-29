@@ -116,7 +116,6 @@ for (const [i, move] of movements.entries()) {
     console.log(`Movement ${i + 1} you deposited ${move}💲`);
   } else console.log(`you Withdraw ${Math.abs(move)}💲`);
 }
-console.clear();
 
 movements.forEach((a, i, array) => {
   a > 0
@@ -143,3 +142,27 @@ const checkDogs = function (dogsJulia, dogsKate) {
 };
 
 checkDogs(julia, kate);
+
+// Map
+const eurToUsd = 1.1;
+
+const moveUsd = movements.map(value => Math.round(value * eurToUsd));
+
+console.log(movements);
+console.log(moveUsd);
+
+const moveUsdFor = [];
+for (const move of movements) {
+  moveUsdFor.push(Math.round(move * eurToUsd));
+}
+console.log(moveUsdFor);
+
+console.clear();
+
+const moveDes = movements.map((value, index) => {
+  return value > 0
+    ? `${index + 1} you deposited ${value}💲`
+    : `${index + 1} you Withdraw ${Math.abs(value)}💲`;
+});
+
+console.log(moveDes);
