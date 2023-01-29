@@ -65,6 +65,7 @@ const date = function () {
   }:${dat.getFullYear()}   ${dat.getHours()}:${dat.getMinutes()}`;
 };
 
+// display movements in html
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
   return movements.forEach((move, index) => {
@@ -81,6 +82,36 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+// calculate and print balance
+const calcPrintBalance = function (movements) {
+  const balance = movements.reduce((acc, crr) => acc + crr);
+  labelBalance.textContent = `${balance}€`;
+};
+calcPrintBalance(account1.movements);
+
+// calculate and display summary of movements
+const calcDisplaySummary = function (movements) {
+  const income = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, cur) => acc + cur, 0);
+  labelSumIn.textContent = `${income}€`;
+
+  const expense = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, cur) => acc + cur, 0);
+  labelSumOut.textContent = `${Math.abs(expense)}€`;
+
+  const rate = 0.012;
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => deposit * rate)
+    .filter(int => int >= 1)
+    .reduce((acc, cur) => acc + cur, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
+
+// create user names for owners
 const createUserNames = function (acc) {
   acc.forEach(acc => {
     acc.userName = acc.owner
@@ -91,9 +122,3 @@ const createUserNames = function (acc) {
   });
 };
 createUserNames(accounts);
-
-const calcPrintBalance = function (movements) {
-  const balance = movements.reduce((acc, crr) => acc + crr);
-  labelBalance.textContent = `${balance}€`;
-};
-calcPrintBalance(account1.movements);
