@@ -91,4 +91,9 @@ const createUserNames = function (acc) {
   });
 };
 createUserNames(accounts);
-console.log(accounts);
+
+const calcPrintBalance = function (movements) {
+  const balance = movements.reduce((acc, crr) => acc + crr);
+  labelBalance.textContent = `${balance}€`;
+};
+calcPrintBalance(account1.movements);
