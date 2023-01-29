@@ -209,11 +209,41 @@ const calcAvgHumanAge = function (ages) {
 };
 console.log(calcAvgHumanAge(data));
 
-console.clear();
-
 const sumDepositsUsd = movements
   .filter(mov => mov > 0)
   .map(mov => mov * eurToUsd)
   .reduce((acc, cur) => acc + cur, 0);
 
 console.log(sumDepositsUsd);
+
+// coding challenge #3
+const calcAvgHumanAges = ages =>
+  ages
+    .map(age => (age <= 2 ? 2 * age : 16 + 4 * age))
+    .filter(age => age >= 18)
+    .reduce((acc, age, _, arr) => acc + age / arr.length, 0);
+
+console.log(calcAvgHumanAges(data));
+
+// find method
+const firstWithdraw = movements.find(mov => mov < 0);
+console.log(firstWithdraw);
+
+console.log(accounts);
+const account = accounts.find(acc => acc.owner === 'Sarah Smith');
+console.log(account);
+
+let accountData = [];
+for (const acc of accounts) {
+  accountData = acc.owner == 'Sarah Smith' ? acc : false;
+}
+console.clear();
+
+console.log(movements);
+
+// equality
+console.log(movements.includes(-130));
+
+// some method --> condition
+const isDep = movements.some(mov => mov > 5000);
+console.log(isDep);
