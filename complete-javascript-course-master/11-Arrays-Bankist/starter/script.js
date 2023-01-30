@@ -400,34 +400,34 @@ const dogs = [
 
 // ----- 1 -----
 dogs.forEach(value => {
-  value.recommendedFood = value.weight ** 0.75 * 28;
+  value.recommendedFood = Math.trunc(value.weight ** 0.75 * 28);
 });
 
 // ---- 2 -----
-dogs.forEach(value => {
+const dogSarah = dogs.find(value => {
   if (value.owners.includes('Sarah')) {
     let out =
       value.recommendedFood > value.curFood
         ? 'Eating too low'
         : 'Eating loo much';
-    return console.log(`${value.owners} dog ${out}`);
+    return console.log(`$Sarah's dog ${out}`);
   }
 });
 
 // ------ 3 -----
 const ownersEatTooMuch = dogs
-  .filter(value => value.curFood > value.recommendedFood)
+  .filter(dog => dog.curFood > dog.recommendedFood)
   .flatMap(arr => arr.owners);
 console.log(ownersEatTooMuch);
 
 const ownersEatTooLittle = dogs
-  .filter(value => value.curFood < value.recommendedFood)
+  .filter(dog => dog.curFood < dog.recommendedFood)
   .flatMap(arr => arr.owners);
 console.log(ownersEatTooLittle);
 
 // ---- 4 -----
 const dogString = function (array, type) {
-  return `${array.join(' ').replace(/ /g, ' and ')} dog's eat too ${type}`;
+  return `${array.join(' and ')} dog's eat too ${type}`;
 };
 
 console.log(dogString(ownersEatTooLittle, 'Little'));
@@ -439,20 +439,15 @@ const exactFood = dogs.some(value => {
 });
 console.log('exact amount of food :', exactFood);
 
+const okayFn = value =>
+  value.curFood > value.recommendedFood * 0.9 &&
+  value.curFood < value.recommendedFood * 1.1;
 //  ------ 6 -------
-const okayFood = dogs.some(
-  value =>
-    value.curFood > value.recommendedFood * 0.9 &&
-    value.curFood < value.recommendedFood * 1.1
-);
+const okayFood = dogs.some(okayFn);
 console.log('okay amount of food:', okayFood);
 
 // ----- 7 -------
-const okayFoodArray = dogs.filter(
-  value =>
-    value.curFood > value.recommendedFood * 0.9 &&
-    value.curFood < value.recommendedFood * 1.1
-);
+const okayFoodArray = dogs.filter(okayFn);
 console.log(okayFoodArray);
 
 // ------ 8 ------
