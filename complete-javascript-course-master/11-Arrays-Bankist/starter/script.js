@@ -1,5 +1,7 @@
 'use strict';
 
+// import { value } from '../../17-Modern-JS-Modules-Tooling/final/dist/script.0b6e4fd3';
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // BANKIST APP
@@ -281,8 +283,6 @@ const chainMap = accounts
 
 console.log(chainMap);
 
-console.clear();
-
 // sort
 const owners = ['zeus', 'jupiter', 'io', 'athena'];
 console.log(owners.sort());
@@ -296,3 +296,167 @@ const sortedMov = movements.sort((a, b) => (a < b ? 1 : -1));
 const impMov = movements.sort((a, b) => b - a);
 console.log(sortedMov);
 console.log(impMov);
+
+// array fill
+const xl = new Array(7);
+console.log(xl);
+
+xl.fill(11, 2, 5);
+console.log(xl);
+
+const em = [10, 11, 12, 13, 14];
+em.fill(12.5, 2, 3);
+console.log(em);
+
+// Array.from
+const fromA = Array.from({ length: 5 }, () => 1);
+console.log(fromA);
+
+const z = Array.from({ length: 8 }, (_, i) => i + 1);
+console.log(z);
+
+// random dice 100
+const randDice = Array.from(
+  { length: 100 },
+  () => Math.round(Math.random() * 5) + 1
+);
+console.log(randDice);
+
+const welcome = document.querySelector('.welcome');
+welcome.addEventListener('click', () => {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    elm => Number(elm.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+});
+
+// Array practice
+// 1
+const bankDepositSum = accounts
+  .flatMap(mov => mov.movements)
+  .filter(dep => dep > 0)
+  .reduce((acc, cur) => acc + cur, 0);
+console.log(bankDepositSum);
+
+// 2
+const countDeposit = accounts
+  .flatMap(mov => mov.movements)
+  .filter(dep => dep >= 1000).length;
+console.log(countDeposit);
+
+// 2.1
+const countDeposit1000 = accounts
+  .flatMap(mov => mov.movements)
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+console.log(countDeposit1000);
+
+// plus plus operator
+let a = 10;
+console.log(a++);
+console.log(a);
+
+// prefixed ++
+console.log(++a);
+
+// 3
+const { deposit, withdrawal } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sum, cur) => {
+      // cur > 0 ? (sum.deposit += cur) : (sum.withdrawal += cur);
+      sum[cur > 0 ? 'deposit' : 'withdrawal'] += cur;
+      return sum;
+    },
+    { deposit: 0, withdrawal: 0 }
+  );
+
+console.log(deposit, withdrawal);
+
+// 4
+const convertTitleCase = function (title) {
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+
+  const exception = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word => (exception.includes(word) ? word : capitalize(word)))
+    .join(' ');
+
+  return capitalize(titleCase);
+};
+console.log(convertTitleCase('this is an sHort algorithm'));
+console.log(convertTitleCase('and here is another title with an EXample but'));
+
+// coding challenge # 4
+console.clear();
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+// ----- 1 -----
+dogs.forEach(value => {
+  value.recommendedFood = value.weight ** 0.75 * 28;
+});
+
+// ---- 2 -----
+dogs.forEach(value => {
+  if (value.owners.includes('Sarah')) {
+    let out =
+      value.recommendedFood > value.curFood
+        ? 'Eating too low'
+        : 'Eating loo much';
+    return console.log(`${value.owners} dog ${out}`);
+  }
+});
+
+// ------ 3 -----
+const ownersEatTooMuch = dogs
+  .filter(value => value.curFood > value.recommendedFood)
+  .flatMap(arr => arr.owners);
+console.log(ownersEatTooMuch);
+
+const ownersEatTooLittle = dogs
+  .filter(value => value.curFood < value.recommendedFood)
+  .flatMap(arr => arr.owners);
+console.log(ownersEatTooLittle);
+
+// ---- 4 -----
+const dogString = function (array, type) {
+  return `${array.join(' ').replace(/ /g, ' and ')} dog's eat too ${type}`;
+};
+
+console.log(dogString(ownersEatTooLittle, 'Little'));
+console.log(dogString(ownersEatTooMuch, 'Much'));
+
+// ----- 5 -------
+const exactFood = dogs.some(value => {
+  value.curFood === value.recommendedFood;
+});
+console.log('exact amount of food :', exactFood);
+
+//  ------ 6 -------
+const okayFood = dogs.some(
+  value =>
+    value.curFood > value.recommendedFood * 0.9 &&
+    value.curFood < value.recommendedFood * 1.1
+);
+console.log('okay amount of food:', okayFood);
+
+// ----- 7 -------
+const okayFoodArray = dogs.filter(
+  value =>
+    value.curFood > value.recommendedFood * 0.9 &&
+    value.curFood < value.recommendedFood * 1.1
+);
+console.log(okayFoodArray);
+
+// ------ 8 ------
+const dogsFoodAce = Array.from(dogs).sort(
+  (a, b) => a.recommendedFood - b.recommendedFood
+);
+console.log(dogsFoodAce);
