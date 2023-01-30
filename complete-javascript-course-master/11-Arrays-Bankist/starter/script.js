@@ -237,7 +237,6 @@ let accountData = [];
 for (const acc of accounts) {
   accountData = acc.owner == 'Sarah Smith' ? acc : false;
 }
-console.clear();
 
 console.log(movements);
 
@@ -247,3 +246,53 @@ console.log(movements.includes(-130));
 // some method --> condition
 const isDep = movements.some(mov => mov > 5000);
 console.log(isDep);
+
+// every method
+console.log(account4.movements.every(a => a > 0));
+
+// callback separate
+const dep = mov => mov > 0;
+console.log(account4.movements.every(dep));
+
+// flat method
+const arr2 = [[1, 3], [2, 4], 7, 0, [10, [11, [12], 13], 14]];
+console.log(arr2.flat(3));
+
+const allMove = accounts.map(acc => acc.movements);
+console.log(allMove);
+
+const allMoveArr = allMove.flat();
+console.log(allMoveArr);
+
+const totalMove = allMoveArr.reduce((acc, cur) => acc + cur, 0);
+console.log(totalMove);
+
+// chained op
+const chainedMove = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, cur) => acc + cur);
+console.log(chainedMove);
+
+// flatMap method -- one level depth
+const chainMap = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, cur) => acc + cur);
+
+console.log(chainMap);
+
+console.clear();
+
+// sort
+const owners = ['zeus', 'jupiter', 'io', 'athena'];
+console.log(owners.sort());
+console.log(owners);
+
+// num
+console.log(movements);
+
+const sortedMov = movements.sort((a, b) => (a < b ? 1 : -1));
+
+const impMov = movements.sort((a, b) => b - a);
+console.log(sortedMov);
+console.log(impMov);
