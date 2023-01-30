@@ -1,4 +1,7 @@
 'use strict';
+
+// import { sort } from 'core-js/core/array';
+
 // BANKIST APP
 
 // Data
@@ -66,9 +69,11 @@ const date = function () {
 };
 
 // display movements in html
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
+  const movement = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
   containerMovements.innerHTML = '';
-  return movements.forEach((move, index) => {
+  return movement.forEach((move, index) => {
     const type = move > 0 ? 'deposit' : 'withdrawal';
     const html = ` <div class="movements__row">
           <div class="movements__type movements__type--${type}">${
@@ -210,4 +215,12 @@ btnClose.addEventListener('click', event => {
     containerApp.style.opacity = 0;
   }
   inputClosePin.value = inputCloseUsername.value = '';
+});
+
+let sorted = false;
+// sort
+btnSort.addEventListener('click', event => {
+  event.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
