@@ -177,3 +177,39 @@ cirp.addEventListener('click', () => console.log('clicked on square capture'), t
 cir2.addEventListener('dblclick', () => cirp.innerHTML = Math.random());
 
 cir2.removeEventListener('click', circle);
+
+document.querySelector('#inv2').innerHTML = '';
+
+// DOM navigation
+// DOM ---> nodes
+// --> every html document is a nodes
+// --> html element are element nodes
+// --> txt inside elements are text nodes
+// --> attributes are called attributes nodes
+// --> comments are comments nodes
+
+// navigating b/w nodes
+// --> parent node
+// --> chile node[num]
+// --> firstChild
+// --> lastChild
+// --> nextSibling
+// --> previous sibling
+
+// relation b/w  innerHTML , child node , firstChild
+
+const parent = document.querySelector('#nodes');
+
+const firstCd = document.querySelector('#childF');
+const secondCd = document.querySelector('#childS');
+const thirdCd = document.querySelector('#childT');
+
+// secondCd.innerHTML = firstCd.innerHTML;
+
+secondCd.innerHTML = firstCd.childNodes[0].nodeValue;
+
+firstCd.innerHTML = thirdCd.lastChild.nodeValue;
+
+firstCd.innerHTML = thirdCd.nodeName;
+
+console.log(firstCd.firstChild.nodeType);
