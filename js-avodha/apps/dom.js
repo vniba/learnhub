@@ -56,8 +56,8 @@
 const show = document.querySelector('#show');
 
 
-const btns = document.querySelector('#btns');
-btns.addEventListener('click', move);
+// const btns = document.querySelector('#btns');
+// btns.addEventListener('click', move);
 
 function move() {
   let id = null;
@@ -75,3 +75,44 @@ function move() {
     }
   }
 }
+
+// Events
+const demo = document.querySelector('#demoOne');
+demo.addEventListener('click', () =>
+  demo.innerHTML = 'no way'
+);
+
+// onclick
+const demoBtn = document.querySelector('#demo').onclick = () =>
+  demo.innerHTML = 'button clicked';
+
+// onload
+document.body.onload = () => console.log('page loaded');
+
+// onchange
+const inp = document.querySelector('#inTx');
+inp.addEventListener('change', () =>
+  demo.innerHTML = inp.value.toUpperCase()
+);
+
+// onmouseover
+const box = document.querySelector('.box');
+box.addEventListener('mouseover', () => {
+  box.style.backgroundColor = 'blue';
+});
+
+// onmouseleave
+box.addEventListener('mouseleave', () =>
+  box.style.backgroundColor = 'violet'
+);
+
+// onfocus
+const foc = document.querySelector('#foc');
+const fc = () => foc.style.backgroundColor = 'red';
+
+// onblur
+foc.addEventListener('blur', () => foc.style.backgroundColor = 'violet');
+// ondblclick
+const db = document.querySelector('#db');
+db.addEventListener('dblclick', () => demo.innerHTML = 'double click'
+);
