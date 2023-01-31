@@ -12,11 +12,14 @@ body {
   color: deeppink;
 }
 
-#container {
+.container {
   width: 350px;
   height: 200px;
   border: 1px solid darkblue;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hello {
@@ -26,6 +29,8 @@ body {
   border-radius: 50%;
   position: absolute;
 }
+
+
 
 .form {
   display: flex;
@@ -39,4 +44,8 @@ body {
   height: 50px;
   background-color: violet;
   margin: 30px;
+}
+
+section {
+  display: flex;
 }
