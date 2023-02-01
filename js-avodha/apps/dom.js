@@ -236,3 +236,28 @@ para.remove();
 parent.removeChild(thirdCd);
 
 parent.replaceChild(head3, secondCd);
+
+// node collection & node list & html collection
+const forms = document.forms;
+console.log(forms);
+
+const hello = document.getElementsByClassName('sameClass');
+console.log(hello);
+hello[2].innerHTML = 'collection';
+
+// looping through html collection
+document.querySelector('#btz').addEventListener('dblclick', () => {
+  for (let i = 0; i < hello.length; i++) {
+    hello[i].innerHTML = 'sameClass ' + i;
+  }
+});
+
+console.clear();
+// node list
+const same = document.querySelectorAll('.sameClass');
+console.log(same);
+
+document.querySelector('#btz').addEventListener('click', () => {
+  same.forEach((value, key) => value.innerHTML = 'node list of sameClass' + key)
+    ;
+});
