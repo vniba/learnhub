@@ -1,5 +1,6 @@
 'use strict';
 
+
 // const demo = document.querySelector('#demoOne');
 // demo.innerHTML = 'DOM 📄';
 
@@ -213,3 +214,25 @@ firstCd.innerHTML = thirdCd.lastChild.nodeValue;
 firstCd.innerHTML = thirdCd.nodeName;
 
 console.log(firstCd.firstChild.nodeType);
+
+// node
+const head3 = document.createElement('h3');
+
+const valHead = document.createTextNode('dolore');
+
+head3.appendChild(valHead);
+
+parent.appendChild(head3);
+
+const para = document.createElement('p').appendChild(document.createTextNode('insertBefore '));
+
+// insertBefore
+parent.insertBefore(para, firstCd);
+
+// remove element
+
+para.remove();
+
+parent.removeChild(thirdCd);
+
+parent.replaceChild(head3, secondCd);
