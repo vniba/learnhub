@@ -20,10 +20,10 @@ const account1 = {
     '2025-12-23T07:42:02.383Z',
     '2026-01-28T09:15:04.904Z',
     '2026-04-01T10:17:24.185Z',
-    '2026-05-08T14:11:59.604Z',
-    '2026-05-27T17:01:17.194Z',
-    '2026-07-11T23:36:17.929Z',
-    '2026-07-12T10:51:36.790Z',
+    '2026-05-15T14:11:59.604Z',
+    '2026-05-20T17:01:17.194Z',
+    '2023-01-30T23:36:17.929Z',
+    '2023-02-01T10:51:36.790Z',
   ],
   currency: 'EUR',
   locale: 'pt-PT', // de-DE
@@ -41,8 +41,8 @@ const account2 = {
     '2029-12-25T06:04:23.907Z',
     '2030-01-25T14:18:46.235Z',
     '2030-02-05T16:33:06.386Z',
-    '2030-04-10T14:43:26.374Z',
-    '2030-06-25T18:49:59.371Z',
+    '2030-04-11T14:43:26.374Z',
+    '2030-07-25T18:49:59.371Z',
     '2030-07-26T12:01:20.894Z',
   ],
   currency: 'USD',
@@ -80,6 +80,21 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 /////////////////////////////////////////////////
 // Functions
+const formatMovementsDate = function (date) {
+  const daysPass = (date1, date2) =>
+    Math.round(Math.abs((date2 - date1) / (1000 * 60 * 60 * 24)));
+  const daysPassed = daysPass(new Date(), date);
+
+  if (daysPassed === 0) return 'Today';
+  if (daysPassed === 1) return 'Yesterday';
+  if (daysPassed <= 7) return `${daysPassed} days ago`;
+  else {
+    const day = `${date.getDate()}`.padStart(2, 0);
+    const month = `${date.getMonth() + 1}`.padStart(2, 0);
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+};
 
 const displayMovements = function (account, sort = false) {
   containerMovements.innerHTML = '';
@@ -90,12 +105,10 @@ const displayMovements = function (account, sort = false) {
 
   movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
-    const date = new Date(account.movementsDates[i]);
 
-    const day = `${date.getDate()}`.padStart(2, 0);
-    const month = `${date.getMonth() + 1}`.padStart(2, 0);
-    const year = date.getFullYear();
-    const displayDate = `${day}/${month}/${year}`;
+    const date = new Date(account.movementsDates[i]);
+    const displayDate = formatMovementsDate(date);
+
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
@@ -177,7 +190,6 @@ btnLogin.addEventListener('click', function (e) {
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
-  console.log(currentAccount);
 
   if (currentAccount?.pin === +inputLoginPin.value) {
     // Display UI and message
@@ -224,7 +236,7 @@ btnTransfer.addEventListener('click', function (e) {
 
     // add transfer date
     currentAccount.movementsDates.push(new Date().toISOString());
-    receiverAcc.movementsDates.push(new date().toISOString());
+    receiverAcc.movementsDates.push(new Date().toISOString());
     // Update UI
     updateUI(currentAccount);
   }
@@ -420,5 +432,12 @@ console.log(dat.setFullYear('2100'));
 console.log(dat);
 
 console.clear();
+
+const born = new Date(2023, 0, 1, 1, 1);
+const now = new Date(2023, 1, 2, 10, 5);
+
+const daysPass = (date1, date2) =>
+  Math.round(Math.abs((date2 - date1) / (1000 * 60 * 60 * 24)));
+console.log(daysPass(born, now));
 
 // internationalizing Dates
