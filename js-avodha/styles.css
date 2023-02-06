@@ -7,9 +7,9 @@ body {
   color: black;
 }
 
-.buttons {
+button {
   font-size: 2rem;
-  color: deeppink;
+  cursor: pointer;
 }
 
 .container {
@@ -44,4 +44,20 @@ body {
   height: 50px;
   background-color: chartreuse;
   margin: 30px;
+}
+
+.div {
+  margin: 15px 0;
+  height: 50px;
+  width: 50px;
+  background-color: lawngreen;
+  /* display: none; */
+}
+
+.div:first-child {
+  background-color: deeppink;
+}
+
+.div:last-child {
+  background-color: dodgerblue;
 }
