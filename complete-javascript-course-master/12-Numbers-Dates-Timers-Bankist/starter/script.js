@@ -192,14 +192,31 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const startLogoutTimer = function () {
+  const ticToc = () => {
+    const min = `${Math.trunc(time / 60)}`.padStart(2, 0);
+    const sec = time % 60;
+    // update remaining time UI
+    labelTimer.textContent = `${min}:${sec}`;
+    // time 0 stop time & logout
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = `Login to get started`;
+      containerApp.style.opacity = 0;
+    }
+    time--;
+  };
+  // set time to 5m
+  let time = 30;
+  // call timer every sec
+  ticToc();
+  const timer = setInterval(ticToc, 1000);
+  return timer;
+};
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
-
-// fake always logged in
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+startLogoutTimer();
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
@@ -233,6 +250,8 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+    timer = startLogoutTimer();
+    if (timer) clearInterval(timer);
 
     // Update UI
     updateUI(currentAccount);
@@ -271,15 +290,17 @@ btnLoan.addEventListener('click', function (e) {
   const amount = Math.floor(inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
-    // add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+    setTimeout(function () {
+      // Add movement
+      currentAccount.movements.push(amount);
+      // add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
+      // Update UI
+      updateUI(currentAccount);
+    }, 3500);
 
-    // Update UI
-    updateUI(currentAccount);
+    inputLoanAmount.value = '';
   }
-  inputLoanAmount.value = '';
 });
 
 btnClose.addEventListener('click', function (e) {
@@ -465,8 +486,6 @@ console.log(daysPass(born, now));
 const date = new Intl.DateTimeFormat('AR').format(new Date());
 console.log(date);
 
-console.clear();
-
 // int numbers
 const num = 10203040.203;
 const options = {
@@ -477,3 +496,27 @@ const options = {
 };
 console.log(new Intl.NumberFormat('ar-SY').format(num));
 console.log(new Intl.NumberFormat('US', options).format(num));
+
+console.clear();
+
+// timer
+setTimeout(name => console.log('here is your delivery', name), 2000, 'wai');
+console.log('what');
+
+// cancel time out
+const color = ['r', 'g', 'b'];
+const colors = setTimeout(
+  (f, s, t) => console.log(`white make up these colors ${f} ${s} ${t}`),
+  5000,
+  ...color
+);
+
+if (color.includes('r')) {
+  clearTimeout(colors);
+}
+
+// setInterval
+// setInterval(() => {
+//   const now = new Date();
+//   console.log(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
+// }, 1000);
