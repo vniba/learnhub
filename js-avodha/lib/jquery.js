@@ -21,7 +21,30 @@ $(document).ready(function () {
 
   $(h1).click(() => $(h1).html('jquery <br> is good'));
 
-  $('#para').dblclick(function () {
-    $(this).html('Dolore necessitatibus maiores deleniti nesciunt est.');
-  });
+});
+
+// mouse events
+// click ,dblclick, enter,leave,
+
+// keyboard events
+// keypress, keydown, keyup
+
+// clipboard events
+// cut,copy , paste
+
+// form events
+// change, submit, blur, focus
+
+// document events
+// load, resize, scroll, unload
+
+$('#para').mouseover(function () {
+  $(this).css("background-color", "blue");
+});
+
+$('.btn').on({
+  click: () => {
+    $("#para").css("color", 'red');
+  },
+  dblclick: () => $(h1).css('font-size', '3rem')
 });
