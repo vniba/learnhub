@@ -44,6 +44,7 @@ button {
   height: 50px;
   background-color: chartreuse;
   margin: 30px;
+  position: absolute;
 }
 
 .div {
@@ -51,6 +52,7 @@ button {
   height: 50px;
   width: 50px;
   background-color: lawngreen;
+  position: absolute;
   /* display: none; */
 }
 
