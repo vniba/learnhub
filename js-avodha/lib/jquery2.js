@@ -43,10 +43,24 @@ $(document).ready(function () {
     // $('#div3').fadeTo('medium', 0.2);
 
     // ----------
-    $('#div1').fadeOut(2000);
+    // $('#div1').fadeOut(2000);
 
-    $('#div2').fadeToggle(5000);
+    // $('#div2').fadeToggle(5000);
 
-    $('#div3').fadeTo('medium', 0.2);
+    // $('#div3').fadeTo('medium', 0.2);
   });
+
+
+  // slide
+
+  // slideUp/ slideDown/ slideToggle
+  $('#bttn').click(() => {
+    // $('#slide').slideDown();
+
+    // $('#slide').slideUp();
+
+    $('#slide').slideToggle('slow');
+
+  });
+
 });
