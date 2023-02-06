@@ -65,3 +65,71 @@ header.append(msg);
 document
   .querySelector('.btn--close-cookie')
   .addEventListener('click', () => msg.remove());
+console.clear();
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', event => {
+  const s1coords = section1.getBoundingClientRect();
+
+  // scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+
+  // old -- way
+  // window.scrollTo({
+  //   left: s1coords.left + window.scrollX,
+  //   top: s1coords.top + window.scrollY,
+  //   behavior: 'smooth',
+  // });
+
+  // new
+  section1.scrollIntoView({
+    behavior: 'smooth',
+  });
+});
+
+const h1 = document.querySelector('h1');
+const hA = event => {
+  // alert('Great ....');
+};
+h1.addEventListener('mouseenter', hA);
+
+// old way
+// h1.onmouseenter = () => alert('hello');
+
+// to remove event listener
+setTimeout(() => {
+  h1.removeEventListener('mouseenter', hA);
+}, 2000);
+
+// event propagation
+// bubbling & capturing
+
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('link', e.target, e.currentTarget);
+
+  // stop event -- not good
+  // e.stopPropagation();
+});
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('container', e.target, e.currentTarget);
+});
+document.querySelector('.nav').addEventListener(
+  'click',
+  function (e) {
+    this.style.backgroundColor = randomColor();
+    console.log('nav', e.target, e.currentTarget);
+  },
+  true
+);
