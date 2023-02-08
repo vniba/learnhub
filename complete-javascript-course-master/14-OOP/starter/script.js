@@ -60,7 +60,7 @@ console.log(arr.unique());
 
 const h1 = document.querySelector('h1');
 console.log(h1.__proto__);
-console.dir(a => a);
+console.dir((a) => a);
 
 // coding challenge #1
 const Car = function (make, speed) {
@@ -175,7 +175,6 @@ victor.init('victor', 2019);
 victor.calcAge();
 
 // coding Challenge #2
-console.clear();
 
 class CarCl {
   constructor(make, speed) {
@@ -204,3 +203,208 @@ ford.break();
 ford.speedUS = 100;
 ford.accelerate();
 console.log(ford);
+
+const Persons = function (fName, bYear) {
+  // instant props
+  this.fName = fName;
+  this.bYear = bYear;
+
+  //  never use method in constructor func
+};
+
+Persons.prototype.calcAge = function () {
+  const date = new Date();
+  console.log(date.getUTCFullYear() - this.bYear);
+};
+
+const Students = function (fName, bYear, course) {
+  Persons.call(this, fName, bYear);
+  this.course = course;
+};
+
+Students.prototype = Object.create(Persons.prototype);
+
+Students.prototype.introduce = function () {
+  // linking two prototypes
+  console.log(`My name is ${this.fName} and I study ${this.course}`);
+};
+
+const lolita = new Students('lolita', 2000, 'Chemistry');
+console.log(lolita);
+lolita.introduce();
+lolita.calcAge();
+
+console.log(lolita instanceof Persons);
+console.log(lolita instanceof Students);
+console.log(lolita instanceof Object);
+
+console.log(lolita.__proto__.__proto__);
+Students.prototype.constructor = Students;
+console.dir(Students.prototype.constructor);
+
+console.clear();
+
+// coding challenge #3
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+// link proto
+EV.prototype = Object.create(Car.prototype);
+
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.charge = chargeTo;
+};
+
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge--;
+  console.log(
+    `${this.make} going at ${this.speed}km/h, with a charge of ${this.charge}%`
+  );
+};
+
+const Tesla = new EV('Tesla', 120, 23);
+console.log(Tesla.charge);
+Tesla.brake();
+Tesla.chargeBattery(90);
+Tesla.accelerate();
+
+// inherit from PersonCl  check 84
+class Student extends PersonCl {
+  constructor(FullName, birthYear, course) {
+    // first call super
+    super(FullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.FullName} and I study ${this.course}`);
+  }
+
+  calcAge() {
+    const date = new Date();
+    console.log(`Iam ${date.getUTCFullYear() - this.birthYear} years old`);
+  }
+}
+const Pirate = new Student('Pirate dude', 1990, 'Physics');
+Pirate.introduce();
+Pirate.calcAge();
+
+// --------------
+// personProto -->
+const flip = Object.create(PersonProto);
+
+const StudentProto = Object.create(PersonProto);
+
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const neil = Object.create(StudentProto);
+neil.init('neil', 2005, 'Biology');
+console.log(neil);
+neil.calcAge();
+neil.introduce();
+
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    // protected prop
+    this._pin = pin;
+    this._movements = [];
+    this.locale = navigator.language;
+  }
+  // public
+  get getMovement() {
+    return this._movements;
+  }
+  deposit(value) {
+    this._movements.push(value);
+  }
+
+  withdrawal(value) {
+    this.deposit(-value);
+  }
+
+  _approveLoan(value) {
+    return true;
+  }
+
+  requestLoan(value) {
+    if (this._approveLoan(value)) {
+      this.deposit(value);
+    }
+  }
+}
+
+const acc1 = new Account('jon', 'YEN', 1010);
+
+acc1.deposit(100);
+acc1.withdrawal(50);
+acc1.requestLoan(1000);
+
+console.log(acc1);
+console.log(acc1.getMovement);
+
+console.clear();
+
+// ?====================================
+// !Class field
+// public fields/prop
+// Private fields/prop
+// public method
+// Private method
+// static
+class Accounts {
+  // public fields(instances)
+  locale = navigator.language;
+
+  // Private fields
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    // protected prop
+    this.#pin = pin;
+    // this._movements = [];
+    // this.locale = navigator.language;
+  }
+  // public methods
+  get getMovement() {
+    return this._movements;
+  }
+  deposit(value) {
+    this._movements.push(value);
+  }
+
+  withdrawal(value) {
+    this.deposit(-value);
+  }
+
+  requestLoan(value) {
+    if (this._approveLoan(value)) {
+      this.deposit(value);
+    }
+  }
+  // private method
+  #approveLoan(value) {
+    return true;
+  }
+  static onlyOnClass() {
+    console.log('no child');
+  }
+}
+
+const accFt = new Accounts('javaScript', 'Js', 100_000);
+console.log(accFt);
+// accFt.onlyOnClass();
+Accounts.onlyOnClass();
