@@ -327,10 +327,12 @@ class Account {
   }
   deposit(value) {
     this._movements.push(value);
+    return this;
   }
 
   withdrawal(value) {
     this.deposit(-value);
+    return this;
   }
 
   _approveLoan(value) {
@@ -340,6 +342,7 @@ class Account {
   requestLoan(value) {
     if (this._approveLoan(value)) {
       this.deposit(value);
+      return this;
     }
   }
 }
@@ -384,16 +387,19 @@ class Accounts {
   }
   deposit(value) {
     this._movements.push(value);
+    return this;
   }
 
   withdrawal(value) {
     this.deposit(-value);
+    return this;
   }
 
   requestLoan(value) {
     if (this._approveLoan(value)) {
       this.deposit(value);
     }
+    return this;
   }
   // private method
   #approveLoan(value) {
@@ -408,3 +414,41 @@ const accFt = new Accounts('javaScript', 'Js', 100_000);
 console.log(accFt);
 // accFt.onlyOnClass();
 Accounts.onlyOnClass();
+
+// chaining
+acc1.deposit(500).deposit(1000).withdrawal(1500);
+console.log(acc1.getMovement);
+
+// coding challenge #4
+
+class EVCl extends CarCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+  accelerate() {
+    this.speed += 20;
+    this.charge--;
+    console.log(
+      `${this.make} going at ${this.speed}km/h, with a charge of ${
+        this.#charge
+      }%`
+    );
+    return this;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+
+  break() {
+    console.log(`${this.make} going at ${this.speed - 5}Km/h`);
+    return this;
+  }
+}
+
+const lamborghini = new EVCl('lamborghini', 120, 23);
+console.log(lamborghini);
+lamborghini.accelerate().accelerate().accelerate().accelerate().break();
