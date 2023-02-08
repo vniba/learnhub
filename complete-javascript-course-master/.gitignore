@@ -24,3 +24,4 @@ $RECYCLE.BIN/
 jsconfig.json
 vscode
 .vscode/settings.json
+.vscode/launch.json
