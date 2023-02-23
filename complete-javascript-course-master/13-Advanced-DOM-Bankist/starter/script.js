@@ -2,6 +2,8 @@
 
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
+const navigation = document.querySelector('.nav');
+
 ///////////////////////////////////////
 // Modal window
 
@@ -248,3 +250,63 @@ tabsCont.addEventListener('click', function (e) {
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
 });
+
+// Menu fade animation
+const handleHover = function (e) {
+  // console.log(this);
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(s => {
+      if (s !== link) {
+        s.style.opacity = this;
+        logo.style.opacity = this;
+      }
+    });
+  }
+};
+
+navigation.addEventListener('mouseover', handleHover.bind(0.5));
+
+navigation.addEventListener('mouseout', handleHover.bind(1));
+
+// const initialCords = section1.getBoundingClientRect();
+// console.log(initialCords);
+// // Sticky navigation
+// window.addEventListener('scroll', function (e) {
+//   this.window.scrollY > initialCords.top
+//     ? navigation.classList.add('sticky')
+//     : navigation.classList.remove('sticky');
+// });
+
+// intersection observer API
+
+// const obsCall = function (entries, observer) {
+//   entries.forEach(e => {
+//     console.log(e);
+//   });
+// };
+// const obsOpt = {
+//   root: null,
+//   threshold: [0, 0.2],
+// };
+// const observer = new IntersectionObserver(obsCall, obsOpt);
+// observer.observe(section1);
+
+const head = document.querySelector('.header');
+const navHeight = navigation.getBoundingClientRect().height;
+const stickyNav = function (entries) {
+  const [entry] = entries;
+
+  !entry.isIntersecting
+    ? navigation.classList.add('sticky')
+    : navigation.classList.remove('sticky');
+};
+const headObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `${navHeight}px`,
+});
+headObserver.observe(head);
