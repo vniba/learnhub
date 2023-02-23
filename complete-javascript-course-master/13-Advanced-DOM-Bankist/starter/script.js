@@ -1,5 +1,7 @@
 'use strict';
 
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 ///////////////////////////////////////
 // Modal window
 
@@ -27,6 +29,47 @@ btnCloseModal.addEventListener('click', closeModal);
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
     closeModal();
+  }
+});
+//
+// document.querySelectorAll('.nav__link').forEach(el => {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView();
+//   });
+// });
+
+// btn scroll
+btnScrollTo.addEventListener('click', event => {
+  const s1coords = section1.getBoundingClientRect();
+
+  // scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+
+  // old -- way
+  // window.scrollTo({
+  //   left: s1coords.left + window.scrollX,
+  //   top: s1coords.top + window.scrollY,
+  //   behavior: 'smooth',
+  // });
+
+  // new
+  section1.scrollIntoView({
+    behavior: 'smooth',
+  });
+});
+
+// event delegation
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  // match
+  if (e.target.classList.contains('nav__link')) {
+    e.preventDefault();
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
 
@@ -66,8 +109,24 @@ document
   .querySelector('.btn--close-cookie')
   .addEventListener('click', () => msg.remove());
 console.clear();
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
+
+// style
+// msg.style.backgroundColor = '#888';
+
+// console.log(getComputedStyle(msg).fontFamily);
+
+// // css variable
+// document.documentElement.style.setProperty('--color-primary', 'red');
+// // attributes
+// const logo = document.querySelector('.nav__logo');
+// console.log(logo.src);
+// logo.alt = 'minimalist';
+
+// console.log(logo.getAttribute('src'));
+// const tw = document.querySelector('.twitter-link');
+// console.log(tw.href);
+
+// data attributes
 
 btnScrollTo.addEventListener('click', event => {
   const s1coords = section1.getBoundingClientRect();
@@ -108,58 +167,84 @@ setTimeout(() => {
 // event propagation
 // bubbling & capturing
 
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
 
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
 
-document.querySelector('.nav__link').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('link', e.target, e.currentTarget);
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('link', e.target, e.currentTarget);
 
-  // stop event -- not good
-  // e.stopPropagation();
-});
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('container', e.target, e.currentTarget);
-});
-document.querySelector('.nav').addEventListener(
-  'click',
-  function (e) {
-    this.style.backgroundColor = randomColor();
-    console.log('nav', e.target, e.currentTarget);
-  },
-  true
-);
+//   // stop event -- not good
+//   // e.stopPropagation();
+// // });
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('container', e.target, e.currentTarget);
+// });
+// document.querySelector('.nav').addEventListener(
+//   'click',
+//   function (e) {
+//     this.style.backgroundColor = randomColor();
+//     console.log('nav', e.target, e.currentTarget);
+//   },
+//   true
+// );
 
 // DOM Traversing
 
-// downwards
-console.log(h1.querySelectorAll('.highlight'));
-console.log(h1.childNodes);
-console.log(h1.children);
+// // downwards
+// console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes);
+// console.log(h1.children);
 
-h1.firstElementChild.style.color = 'red';
-h1.lastElementChild.style.color = 'yellow';
+// h1.firstElementChild.style.color = 'red';
+// h1.lastElementChild.style.color = 'yellow';
 
-// going upwards
-console.log(h1.parentNode);
-console.log(h1.parentElement);
+// // going upwards
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
 
-h1.closest('.header').style.background = 'var(--gradient-secondary';
+// h1.closest('.header').style.background = 'var(--gradient-secondary';
 
-// sideways -> siblings
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
+// // sideways -> siblings
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
 
-console.log(h1.previousSibling);
-console.log(h1.nextSibling);
+// console.log(h1.previousSibling);
+// console.log(h1.nextSibling);
 
-console.log(h1.parentElement.children);
-[...h1.parentElement.children].forEach(e => {
-  if (e !== h1) {
-    e.style.transform = 'scale(0.5)';
-  }
+// console.log(h1.parentElement.children);
+// [...h1.parentElement.children].forEach(e => {
+//   if (e !== h1) {
+//     e.style.transform = 'scale(0.5)';
+//   }
+// });
+
+// tabbed component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsCont = document.querySelector('.operations__tab-container');
+
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsCont.addEventListener('click', function (e) {
+  e.preventDefault();
+  const clicked = e.target.closest('.operations__tab');
+
+  if (!clicked) return;
+
+  // remove
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  // active tab
+
+  clicked.classList.add('operations__tab--active');
+
+  // activate content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
 });
