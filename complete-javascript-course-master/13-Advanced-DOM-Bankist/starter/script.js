@@ -438,3 +438,16 @@ const slider = function () {
   });
 };
 slider();
+
+// document.addEventListener('DOMContentLoaded', e => {
+//   console.log(e);
+// });
+
+// window.addEventListener('load', e => console.log(e));
+
+// !depreciated
+// window.addEventListener('beforeunload', e => {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = ' ';
+// });
