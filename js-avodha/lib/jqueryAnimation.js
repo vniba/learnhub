@@ -99,8 +99,43 @@ $(document).ready(function () {
   // });
 
   // css
+  // $('#btn').click(() => {
+  // $('.first').css('backgroundColor', 'greenyellow');
+  //   $('.first').css({ color: 'aqua', backgroundColor: 'gray' });
+  // });
+
+  //Dimention
   $('#btn').click(() => {
-    // $('.first').css('backgroundColor', 'greenyellow');
-    $('.first').css({ color: 'aqua', backgroundColor: 'gray' });
+    // let txt = '';
+    // txt += $('.first').width() + ' w <br>';
+    // txt += $('.first').height() + ' h<br>';
+    // txt += $('.first').innerWidth() + ' iw <br>';
+    // txt += $('.first').innerHeight() + ' iH<br>';
+    // txt += $('.first').outerWidth(true) + ' ow<br>';
+    // txt += $('.first').outerHeight() + ' oh<br>';
+    // $('.first').html(txt);
+    // $('.first').width(300).height(200);
   });
+
+  // getting ancestors element
+  // parent()
+
+  // $('span').parent().css({ color: 'greenyellow' });
+  // $('span').parents().css({ color: 'greenyellow' });
+  // $('span').parentsUntil('div').css({ color: 'red' });
+
+  // $('#main').find('ul').css({ color: 'green' });
+
+  // $('ul').siblings().css({ color: 'red' });
+  // $('ul').next().css({ color: 'blue' });
+  // $('ul').nextAll().css({ color: 'blue' });
+  // $('ul').nextUntil('br').css({ color: 'orangered' });
+  // $('ul').prev().css({ color: 'violet' });
+  // $('ul').prevAll().css({ backgroundColor: 'lavender' });
+
+  $('p').first().css({ color: 'purple' });
+  $('p').last().css({ color: 'pink' });
+  $('p').eq(1).css({ color: 'black' });
+  $('p').filter('#two').css({ backgroundColor: 'red' });
+  $('p').not('#two').css({ fontSize: 20 });
 });
