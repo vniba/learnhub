@@ -1,5 +1,22 @@
 {
+  "name": "complete-javascript-course-master",
+  "version": "1.0.0",
+  "description": "> > > > > # complete-javascript-course-master",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/vniba/complete-javascript-course-master.git"
+  },
+  "author": "vn!ba <itsmescorona@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/vniba/complete-javascript-course-master/issues"
+  },
+  "homepage": "https://gitlab.com/vniba/complete-javascript-course-master#readme",
   "dependencies": {
-    "live-server": "^1.2.2"
+    "leaflet": "^1.9.3"
   }
 }
