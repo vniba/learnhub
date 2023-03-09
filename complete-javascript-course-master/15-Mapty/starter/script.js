@@ -12,6 +12,40 @@ const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 let map, mapEvent;
 
+class workout {
+  date = new Date();
+  id = Date.now() + ' '.slice(-10);
+
+  constructor(cords, distance, duration) {
+    this.cords = cords; //[lat,lng]
+    this.distance = distance; //km
+    this.duration = duration; //min
+  }
+}
+class Running extends workout {
+  constructor(cords, distance, duration, cadence) {
+    super(cords, distance, duration);
+    this.cadence = cadence;
+    this.calcPace();
+  }
+  calcPace() {
+    this.pace = this.duration / this.distance;
+    return this.pace;
+  }
+}
+class Cycling extends workout {
+  constructor(cords, distance, duration, elevation) {
+    super(cords, distance, duration);
+    this.elevation = elevation;
+    this.calcSpeed();
+  }
+  calcSpeed() {
+    this.speed = this.distance / (this.duration / 60);
+    return this.speed;
+  }
+}
+
+// Architecture
 class App {
   #map;
   #mapEvent;
@@ -33,7 +67,6 @@ class App {
     const { longitude } = position.coords;
     // console.log(`https://www.google.nl/maps/@${latitude},${longitude}`);
     const cords = [latitude, longitude];
-    console.log(this);
 
     this.#map = L.map('map').setView(cords, 13);
     L.tileLayer('https://tile.openstreetmap.de/{z}/{x}/{y}.png', {
