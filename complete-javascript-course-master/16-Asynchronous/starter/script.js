@@ -1,5 +1,5 @@
 'use strict';
-//callback hell
+//callback
 
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
@@ -44,7 +44,6 @@ const getCountryData = function (country) {
 };
  */
 // getCountryData('japan');
-
 const renderCountry = function (data, className = '') {
   const html = `   <article class="country">
           <img class="country__img"  alt ="${data.flags.alt} " src="${
@@ -71,6 +70,8 @@ const renderCountry = function (data, className = '') {
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
 };
+
+/*
 
 const getCountryAndNeighbor = function (country) {
   const request = new XMLHttpRequest();
@@ -103,5 +104,19 @@ const getCountryAndNeighbor = function (country) {
     });
   });
 };
-getCountryAndNeighbor('mexico');
-///////////////////////////////////////
+getCountryAndNeighbor('mexico'); */
+
+// const request = new XMLHttpRequest();
+// request.open(
+//   'GET',
+//   `https://restcountries.com/v3.1/name/${country}?fullText=true`
+// );
+
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
+    .then(response => response.json())
+    .then(data => {
+      renderCountry(data.at(0));
+    });
+};
+getCountryData('mali');
