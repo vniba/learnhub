@@ -44,6 +44,10 @@ const getCountryData = function (country) {
 };
  */
 // getCountryData('japan');
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+};
+
 const renderCountry = function (data, className = '') {
   const html = `   <article class="country">
           <img class="country__img"  alt ="${data.flags.alt} " src="${
@@ -112,11 +116,36 @@ getCountryAndNeighbor('mexico'); */
 //   `https://restcountries.com/v3.1/name/${country}?fullText=true`
 // );
 
-const getCountryData = function (country) {
-  fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
-    .then(response => response.json())
-    .then(data => {
-      renderCountry(data.at(0));
-    });
+const getJSON = function (url) {
+  return fetch(url).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status + response.statusText);
+    }
+    return response.json();
+  });
 };
-getCountryData('mali');
+
+const getCountryData = function (country) {
+  /*   fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status + response.statusText);
+      }
+      return response.json();
+    }) */
+  getJSON(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
+    .then(data => {
+      renderCountry(data[0]);
+
+      const neighbor = data[0].borders?.[0];
+      if (!neighbor) throw new Error('NO neighbor found');
+      return getJSON(`https://restcountries.com/v3.1/alpha/${neighbor}`);
+    })
+    .then(data => renderCountry(data[0], 'neighbour'))
+    .catch(error => renderError(`something went wrong ${error.message}`))
+    .finally(() => (countriesContainer.style.opacity = 1));
+};
+btn.addEventListener('click', function (e) {
+  e.preventDefault();
+  getCountryData('india');
+});
