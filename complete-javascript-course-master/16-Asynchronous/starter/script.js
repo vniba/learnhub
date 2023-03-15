@@ -145,7 +145,71 @@ const getCountryData = function (country) {
     .catch(error => renderError(`something went wrong ${error.message}`))
     .finally(() => (countriesContainer.style.opacity = 1));
 };
-btn.addEventListener('click', function (e) {
-  e.preventDefault();
-  getCountryData('india');
+// btn.addEventListener('click', function (e) {
+//   e.preventDefault();
+//   getCountryData('india');
+// });
+
+// Coding challenge #1
+const whereAmI = function (lat, lng) {
+  fetch(
+    `https://geocode.xyz/${lat},${lng}?geoit=JSON&auth=445064281622076526264x123587`
+  )
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('problem with geocoding' + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      getCountryData(data.country);
+      // console.log(data.region);
+    })
+    .catch(error => console.error(error.message));
+};
+
+// btn.addEventListener('click', () => {
+//   // whereAmI(51.508, 13.381);
+//   whereAmI(-33.933, 18.474);
+// });
+/* console.log('start');
+setTimeout(() => {
+  console.log('0 sec timer');
+}, 0);
+
+Promise.resolve('resolved promise 1').then(res => {
+  for (let i = 0; i < 1000000; i++) {}
+  console.log(res);
 });
+
+Promise.resolve('resolved promise 2').then(res => console.log(res));
+console.log('stop'); */
+
+// Promises
+
+const lottery = new Promise(function (resolve, reject) {
+  console.log('lottery draw started 🤟');
+  setTimeout(() => {
+    if (Math.random() >= 0.5) {
+      resolve('you Won 😆');
+    } else {
+      reject(new Error('You lost 😢'));
+    }
+  }, 2000);
+});
+lottery.then(res => console.log(res)).catch(err => console.error(err));
+
+// pomisifying
+const wait = function (seconds) {
+  return new Promise(resolve => {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+wait(2)
+  .then(() => {
+    console.log('waited for 2 sec');
+    return wait(1);
+  })
+  .then(() => console.log('waited 1 s'));
+Promise.resolve('hello check').then(r => console.log(r));
+Promise.reject('hello eorr').catch(r => console.log(r));
