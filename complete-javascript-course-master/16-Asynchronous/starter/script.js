@@ -361,8 +361,144 @@ const whereAmIAS = async function () {
     throw error;
   }
 };
-console.table(1);
-whereAmIAS().then(res => {
-  console.log(res);
-});
-console.table(3);
+/*
+(async function () {
+  try {
+    const wh = await whereAmIAS();
+    console.log(wh);
+  } catch (error) {
+    console.error(error);
+  }
+  console.log('finished');
+})();
+ */
+//
+const getThreeCountries = async function (c1, c2, c3) {
+  try {
+    /*    const [data1] = await getJSON(
+      `https://restcountries.com/v3.1/name/${c1}?fullText=true`
+    );
+    const [data2] = await getJSON(
+      `https://restcountries.com/v3.1/name/${c2}?fullText=true`
+    );
+    const [data3] = await getJSON(
+      `https://restcountries.com/v3.1/name/${c3}?fullText=true`
+    ); */
+    const data = await Promise.all([
+      getJSON(`https://restcountries.com/v3.1/name/${c1}?fullText=true`),
+      getJSON(`https://restcountries.com/v3.1/name/${c2}?fullText=true`),
+      getJSON(`https://restcountries.com/v3.1/name/${c3}?fullText=true`),
+    ]);
+    // console.log([...data1.capital, ...data2.capital, ...data3.capital]);
+    console.log(data);
+    console.log(
+      data.map(d => {
+        return d[0].capital;
+      })
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
+// getThreeCountries('mali', 'greece', 'australia');
+
+// // Promise.race([])->[]
+// (async function () {
+//   const response = await Promise.race([
+//     getJSON(`https://restcountries.com/v3.1/name/bolivia?fullText=true`),
+//     getJSON(`https://restcountries.com/v3.1/name/pakistan?fullText=true`),
+//     getJSON(`https://restcountries.com/v3.1/name/peru?fullText=true`),
+//   ]);
+//   // console.log(response);
+// })();
+
+const timeout = function (ms) {
+  return new Promise(function (_, reject) {
+    setTimeout(() => {
+      reject(new Error('request denied'));
+    }, ms);
+  });
+};
+// Promise.race([
+//   getJSON(`https://restcountries.com/v3.1/name/peru?fullText=true`),
+//   timeout(1000),
+// ])
+//   .then(res => console.log(res))
+//   .catch(er => console.error(er));
+
+// Promise.allSettled()
+/* Promise.allSettled([
+  Promise.resolve('success'),
+  Promise.reject('reject'),
+  Promise.resolve('success 2'),
+]).then(res => console.log(res)); */
+
+// Promise.any()
+/* Promise.any([
+  Promise.reject('reject'),
+  Promise.resolve('success 2'),
+  Promise.resolve('success 3'),
+])
+  .then(res => console.log(res))
+  .catch(er => console.error(er)); */
+
+//coding challenge #3
+/* const imgContainer = document.querySelector('.images');
+const createImageNew = function (img) {
+  return new Promise((resolve, reject) => {
+    const img = document.createElement('img');
+    img.src = imgPath;
+    img.addEventListener('load', function () {
+      imgContainer.append(img);
+      resolve(img);
+    });
+    img.addEventListener('error', () => {
+      reject(new Error('Images not found'));
+    });
+  });
+}; */
+
+/*  let currentImg;
+ createImage('./img/img-3.jpg')
+   .then(img => {
+     currentImg = img;
+     return wait(2);
+   })
+   .then(() => {
+     currentImg.style.display = 'none';
+     return createImage('./img/img-1.jpg');
+   })
+   .then(img => {
+     currentImg = img;
+     return wait(2);
+   })
+   .then(() => {
+     currentImg.style.display = 'none';
+   })
+   .catch(error => console.log(error)); */
+/* const loadNPause = async function () {
+  try {
+    let img = await createImage('./img/img-1.jpg');
+    await wait(2);
+    img.style.display = 'none';
+    await wait(2);
+    img = await createImage('./img/img-2.jpg');
+    await wait(2);
+    img.style.display = 'none';
+  } catch (error) {
+    console.error(error);
+  }
+};
+loadNPause(); */
+
+const loadAll = async function (imgArr) {
+  try {
+    const imgs = imgArr.map(async imgPath => await createImage(imgPath));
+    const success = await Promise.all(imgs);
+    success.map(img => img.classList.add('parallel'));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+loadAll(['./img/img-1.jpg', './img/img-2.jpg', 'img/img-3.jpg']);
