@@ -1,4 +1,5 @@
 'use strict';
+
 //callback
 
 const btn = document.querySelector('.btn-country');
@@ -38,15 +39,11 @@ const getCountryData = function (country) {
           </div>
         </article>
   `;
-    countriesContainer.insertAdjacentHTML('beforeend', html);
-    countriesContainer.style.opacity = 1;
   });
 };
  */
 // getCountryData('japan');
-const renderError = function (msg) {
-  countriesContainer.insertAdjacentText('beforeend', msg);
-};
+const renderError = function (msg) {};
 
 const renderCountry = function (data, className = '') {
   const html = `   <article class="country">
@@ -72,7 +69,6 @@ const renderCountry = function (data, className = '') {
         </article>
   `;
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
 };
 
 /*
@@ -142,8 +138,7 @@ const getCountryData = function (country) {
       return getJSON(`https://restcountries.com/v3.1/alpha/${neighbor}`);
     })
     .then(data => renderCountry(data[0], 'neighbour'))
-    .catch(error => renderError(`something went wrong ${error.message}`))
-    .finally(() => (countriesContainer.style.opacity = 1));
+    .catch(error => renderError(`something went wrong ${error.message}`));
 };
 // btn.addEventListener('click', function (e) {
 //   e.preventDefault();
@@ -187,7 +182,7 @@ console.log('stop'); */
 
 // Promises
 
-const lottery = new Promise(function (resolve, reject) {
+/* const lottery = new Promise(function (resolve, reject) {
   console.log('lottery draw started 🤟');
   setTimeout(() => {
     if (Math.random() >= 0.5) {
@@ -204,12 +199,170 @@ const wait = function (seconds) {
   return new Promise(resolve => {
     setTimeout(resolve, seconds * 1000);
   });
-};
-wait(2)
+}; */
+/* wait(2)
   .then(() => {
     console.log('waited for 2 sec');
     return wait(1);
   })
   .then(() => console.log('waited 1 s'));
 Promise.resolve('hello check').then(r => console.log(r));
-Promise.reject('hello eorr').catch(r => console.log(r));
+Promise.reject('hello error').catch(r => console.log(r)); */
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject(err)
+    // );
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+// getPosition().then(res => console.log('res :>> ', res));
+
+const whereAmINew = function () {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+      return fetch(
+        `https://geocode.xyz/${lat},${lng}?geoit=JSON&auth=445064281622076526264x123587`
+      );
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('problem with geocoding' + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      getCountryData(data.country);
+      // console.log(data.region);
+    })
+    .catch(error => console.error(error.message));
+};
+
+// btn.addEventListener('click', whereAmINew);
+
+// coding challenge #2
+const createImage = function (imgPath) {
+  return new Promise((resolve, reject) => {
+    const img = document.createElement('img');
+
+    resolve(
+      fetch(imgPath).then(res => {
+        if (!res.ok) {
+          throw new Error('failed to load img' + res.status);
+        }
+        img.src = res.url;
+        return document.querySelector('.images').appendChild(img);
+      })
+    );
+    reject('failed to load image');
+  });
+};
+
+const wait = function (seconds) {
+  return new Promise(resolve => {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+// btn.addEventListener('click', () => {
+//   createImage('./img/img-3.jpg')
+//     .then(res => {
+//       wait(2)
+//         .then(resp => {
+//           res.style.display = 'none';
+//           return res;
+//         })
+//         .then(response => {
+//           wait(2).then(res => {
+//             createImage('./img/img-2.jpg').then(res => {
+//               res.style.display = 'flex';
+//               return res;
+//             });
+//           });
+//         });
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     });
+// });
+
+// another solution 👆
+const imgContainer = document.querySelector('.images');
+const createImageNew = function (img) {
+  return new Promise((resolve, reject) => {
+    const img = document.createElement('img');
+    img.src = imgPath;
+    img.addEventListener('load', function () {
+      imgContainer.append(img);
+      resolve(img);
+    });
+    img.addEventListener('error', () => {
+      reject(new Error('Images not found'));
+    });
+  });
+};
+/* let currentImg;
+createImage('./img/img-3.jpg')
+  .then(img => {
+    currentImg = img;
+    return wait(2);
+  })
+  .then(() => {
+    currentImg.style.display = 'none';
+    return createImage('./img/img-1.jpg');
+  })
+  .then(img => {
+    currentImg = img;
+    return wait(2);
+  })
+  .then(() => {
+    currentImg.style.display = 'none';
+  })
+  .catch(error => console.log(error));
+ */
+
+const getPositionAs = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject(err)
+    // );
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+const whereAmIAS = async function () {
+  try {
+    const { latitude: lat, longitude: lng } = await getPosition();
+    const post = await fetch(
+      `https://geocode.xyz/${lat},${lng}?geoit=JSON&auth=445064281622076526264x123587`
+    );
+    if (!post.ok) {
+      throw new Error('problem getting data form the server');
+    }
+    const dataPost = await post.json();
+    const res = await fetch(
+      `https://restcountries.com/v3.1/name/${dataPost.standard.countryname}?fullText=true`
+    );
+    if (!res.ok) {
+      throw new Error('problem getting data form the server');
+    }
+    const data = await res.json();
+    countriesContainer.style.opacity = 1;
+    renderCountry(data[0]);
+
+    return `you are in ${dataPost.standard.countryname}`;
+  } catch (error) {
+    console.error(error);
+
+    // reject promise returned form async fn
+    throw error;
+  }
+};
+console.table(1);
+whereAmIAS().then(res => {
+  console.log(res);
+});
+console.table(3);
