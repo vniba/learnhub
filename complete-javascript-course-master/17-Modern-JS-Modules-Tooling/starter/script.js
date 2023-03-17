@@ -30,19 +30,76 @@ async function nop() {
 const bd = await nop();
 document.querySelector('body').innerHTML = bd;
  */
-const shoppingCartNew = (function () {
+// const shoppingCartNew = (function () {
+//   const cart = [];
+//   const sCost = 800;
+//   const total = 2800;
+//   const tq = 31;
+//   const addToCart = function (pro, qut) {
+//     cart.push(pro, qut);
+//     console.log(cart);
+//   };
+//   const orderStock = function (pro, qut) {
+//     cart.push(pro, qut);
+//     console.log(cart);
+//   };
+//   return { addToCart, cart, total, tq };
+// })();
+// shoppingCartNew.addToCart('tree', 20);
+
+// importing module
+// import './shoppingCart.js'
+// import {addToCart as aT, totalPrice, tQ} from "./shoppingCart.js";
+// aT('water', 200);
+// console.log(totalPrice, tQ);
+// import * as ShoppingCart from './shoppingCart.js';
+/*
+
+console.log('importing module');
+
+// ShoppingCart.addToCart('phone', 2);
+
+import add, { totalPrice, cart, log } from './shoppingCart.js';
+
+add('book', 200);
+add('pencil', 300);
+console.log(cart);
+log();
+*/
+
+// const res = await fetch("https://jsonplaceholder.typicode.com/posts")
+// const data = await  res.json()
+// console.log(data.forEach(ob=>console.log(ob)));
+// console.log('nop');
+/*const getLastPost = async function () {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await res.json();
+  return { title: data.at(-1).title, body: data.at(-1).body };
+};
+// clean
+getLastPost().then(res => console.log(res));
+
+const lastPost = await getLastPost();
+console.log(lastPost);*/
+// import { cart } from './shoppingCart';
+
+/*
+const ShoppingCart = (function () {
   const cart = [];
-  const sCost = 800;
-  const total = 2800;
-  const tq = 31;
-  const addToCart = function (pro, qut) {
-    cart.push(pro, qut);
-    console.log(cart);
+  const shoppingCost = 300;
+  const totalPrice = 82;
+  const totalQuantity = 20;
+  const addToCart = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`${product} ${quantity} added to 🛒`);
   };
-  const orderStock = function (pro, qut) {
-    cart.push(pro, qut);
-    console.log(cart);
+
+  const orderStock = function (product, quantity) {
+    console.log(`${quantity} ${product} ordered successfully`);
   };
-  return { addToCart, cart, total, tq };
+  return { addToCart, cart, totalPrice, totalQuantity };
 })();
-shoppingCartNew.addToCart('tree', 20);
+ShoppingCart.addToCart('usb', 2);
+console.log(ShoppingCart.cart);
+console.log(ShoppingCart.totalPrice);
+*/
