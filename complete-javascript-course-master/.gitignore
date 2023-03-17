@@ -234,3 +234,6 @@ dist
 .pnp.*
 /.parcel-cache/
 .parcel-cache/
+/.parcel-cache/**
+.parcel-cache
+.parcel-cache/**
