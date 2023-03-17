@@ -29,31 +29,31 @@ async function nop() {
 }
 const bd = await nop();
 document.querySelector('body').innerHTML = bd;
- */
-// const shoppingCartNew = (function () {
-//   const cart = [];
-//   const sCost = 800;
-//   const total = 2800;
-//   const tq = 31;
-//   const addToCart = function (pro, qut) {
-//     cart.push(pro, qut);
-//     console.log(cart);
-//   };
-//   const orderStock = function (pro, qut) {
-//     cart.push(pro, qut);
-//     console.log(cart);
-//   };
-//   return { addToCart, cart, total, tq };
-// })();
-// shoppingCartNew.addToCart('tree', 20);
 
-// importing module
-// import './shoppingCart.js'
-// import {addToCart as aT, totalPrice, tQ} from "./shoppingCart.js";
-// aT('water', 200);
-// console.log(totalPrice, tQ);
-// import * as ShoppingCart from './shoppingCart.js';
-/*
+const shoppingCartNew = (function () {
+  const cart = [];
+  const sCost = 800;
+  const total = 2800;
+  const tq = 31;
+  const addToCart = function (pro, qut) {
+    cart.push(pro, qut);
+    console.log(cart);
+  };
+  const orderStock = function (pro, qut) {
+    cart.push(pro, qut);
+    console.log(cart);
+  };
+  return { addToCart, cart, total, tq };
+})();
+shoppingCartNew.addToCart('tree', 20);
+
+importing module
+import './shoppingCart.js'
+import {addToCart as aT, totalPrice, tQ} from "./shoppingCart.js";
+aT('water', 200);
+console.log(totalPrice, tQ);
+import * as ShoppingCart from './shoppingCart.js';
+
 
 console.log('importing module');
 
@@ -83,8 +83,7 @@ const lastPost = await getLastPost();
 console.log(lastPost);*/
 // import { cart } from './shoppingCart';
 
-/*
-const ShoppingCart = (function () {
+/*const ShoppingCart = (function () {
   const cart = [];
   const shoppingCost = 300;
   const totalPrice = 82;
@@ -101,5 +100,29 @@ const ShoppingCart = (function () {
 })();
 ShoppingCart.addToCart('usb', 2);
 console.log(ShoppingCart.cart);
-console.log(ShoppingCart.totalPrice);
-*/
+console.log(ShoppingCart.totalPrice);*/
+// import cloneDeep from '../../node_modules/lodash-es/cloneDeep.js';
+import cloneDeep from '../../node_modules/lodash-es/cloneDeep.js';
+const state = {
+  cart: [{ product: 'pen', quantity: 2 }],
+  user: { is: false },
+};
+const stateClone = Object.assign({}, state);
+console.log(stateClone);
+state.user.is = true;
+
+const stateDeep = cloneDeep(state);
+console.log(stateDeep);
+state.user.is = false;
+
+import add, { totalPrice, cart, log } from './shoppingCart.js';
+
+add('book', 120);
+add('pencil', 300);
+console.log(cart);
+log();
+if (module.hot) {
+  module.hot.accept();
+}
+console.log(cart.find(el => el.quantity >= 1));
+import 'core-js/stable';
