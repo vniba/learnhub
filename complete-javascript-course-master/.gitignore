@@ -23,6 +23,9 @@ $RECYCLE.BIN/
 *.lnk
 jsconfig.json
 vscode
+.vacode
+/vscode
+./vscode
 .vscode/settings.json
 .vscode/launch.json
 node_modules
