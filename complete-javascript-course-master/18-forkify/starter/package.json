@@ -1,0 +1,21 @@
+{
+  "author": "god",
+  "license": "ISC",
+  "private": true,
+  "type": "module",
+  "name": "sambar",
+  "version": "1.0.0",
+  "description": "recipe app",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.2.0"
+  },
+  "dependencies": {
+    "sass": "^1.59.3"
+  }
+}

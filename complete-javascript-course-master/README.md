@@ -30,4 +30,8 @@
 
 ---
 
-**Data-structure 🎏 :** `destructring array and objects, REST operator, Spread Operator`
+**Data-structure 🎏 :** `destructring array and objects, REST operator, Spread Operator, short-circuiting, ??, ??=, &&=, ||=`
+
+**project**
+ 1. **football match**
+

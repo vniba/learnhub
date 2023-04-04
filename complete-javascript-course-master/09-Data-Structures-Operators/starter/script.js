@@ -4,6 +4,19 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+const weekday = ['mon', 'tue', 'wed', 'thu', 'fri',
+  'sat', 'sun']
+const closingHours = {
+  [weekday[0]]: {
+    cls: 10
+  },
+  [weekday[5]]: {
+    cls: 11
+  },
+  [weekday[3]]: {
+    cls: 8
+  }
+}
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -33,6 +46,7 @@ const restaurant = {
       close: 5,
     },
   },
+  closingHours,
   orderPasta(ing1, ing2, ing3) {
     console.log(`Here is your tasty pasta 🍉 with ${ing1}, ${ing2}, ${ing3}`);
   },
@@ -311,4 +325,72 @@ team1 > team2 && console.log('Team 2 more likely win');
 console.log(allPlayers, players1Final);
 console.log(gk);
 console.log(team1, draw, team2);
-console.clear();
+
+// for of loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu]
+
+for (const iterator of menu) {
+  console.log(iterator)
+};
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i} ${el}`);
+}
+
+
+for (const iterator of Object.keys(closingHours)) {
+  console.log(iterator);
+}
+console.log(restaurant.closingHours);
+
+const values = Object.values(closingHours)
+console.log(values);
+
+
+const entry = Object.entries(closingHours)
+console.log(entry);
+
+for (const [key, { cls }] of entry) {
+  console.log(`on ${key}  close at ${cls}`);
+}
+
+if (restaurant.closingHours && restaurant.closingHours.tue)
+  console.log(restaurant.closingHours.tue.cls);
+
+// with optional chain
+console.log(restaurant.closingHours.tue?.cls);
+console.log(restaurant.closingHours?.mon?.cls);
+
+for (const iterator of weekday) {
+  const opens = restaurant.closingHours[iterator]?.cls ?? 'really closed'
+  console.log(`on ${iterator} we close ${opens}`);
+
+}
+
+// methods
+
+console.log(restaurant.orders?.(1, 2) ??
+  'no method');
+console.log(restaurant.order?.(1, 2) ??
+  'no method');
+
+// array
+const user = [{ name: 'elle', age: 20 }]
+
+console.log(user[0]?.name ?? 'user array empty');
+
+// console.clear();
+
+// coding challenge no #2 🔴
+// ----- 1 --------
+for (const [num, iterator] of game.scored.entries()) {
+  console.log(`Goal ${num + 1}: ${iterator}`);
+}
+
+// ------- 2 ------
+let total = 0
+for (const val of Object.values(game.odds)) {
+  let leng = Object.values(game.odds).length
+  total += val / leng
+}
+console.log(total);
