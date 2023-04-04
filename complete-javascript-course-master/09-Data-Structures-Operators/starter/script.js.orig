@@ -2,6 +2,7 @@
 
 // Data needed for a later exercise
 
+<<<<<<< HEAD
 const weekday = ['mon', 'tue', 'wed', 'thu', 'fri',
   'sat', 'sun']
 const closingHours = {
@@ -15,6 +16,20 @@ const closingHours = {
     cls: 8
   }
 }
+=======
+const weekday = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const closingHours = {
+  [weekday[0]]: {
+    cls: 10,
+  },
+  [weekday[5]]: {
+    cls: 11,
+  },
+  [weekday[3]]: {
+    cls: 8,
+  },
+};
+>>>>>>> 6ace1e5ab45679a593d234059c0cc5a6846d0ac4
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',

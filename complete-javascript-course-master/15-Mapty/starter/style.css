@@ -43,6 +43,7 @@ a:visited {
 /* SIDEBAR */
 .sidebar {
   flex-basis: 50rem;
+  max-width: 100%;
   background-color: var(--color-dark--1);
   padding: 3rem 5rem 4rem 5rem;
   display: flex;
@@ -213,8 +214,8 @@ a:visited {
 }
 
 .running-popup .leaflet-popup-content-wrapper {
-  border-left: 5px solid var(--color-brand--2);
+  border-bottom: 5px solid var(--color-brand--2);
 }
 .cycling-popup .leaflet-popup-content-wrapper {
-  border-left: 5px solid var(--color-brand--1);
+  border-bottom: 5px solid var(--color-brand--1);
 }
