@@ -4,7 +4,8 @@ import icons from '../../img/icons.svg';
 export class RecipeView {
   private parentElement = document.querySelector('.recipe')! as HTMLDivElement;
   private data!: recipeInt;
-  constructor() {}
+  private errorMsg = 'Please Try another one!'
+  private message = ''
 
   render(d: recipeInt) {
     this.data = d;
@@ -28,7 +29,35 @@ export class RecipeView {
     this.parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
-  private() {}
+  renderError(message:string = this.errorMsg) {
+    const markup = `<div class="error">
+            <div>
+              <svg>
+                <use href="${icons}#icon-alert-triangle"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div> `
+    this.clear();
+    this.parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+  renderMessage(message:string = this.message) {
+    const markup = `<div class="message">
+            <div>
+              <svg>
+                <use href="${icons}#icon-smile"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+          </div> `
+    this.clear();
+    this.parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  addHandlerRender(handler: (event: Event) => void): void {
+  ['hashchange', 'load'].forEach((e: string) => window.addEventListener(e, handler));
+}
+
 
   private generateMarkup(): string {
     return `

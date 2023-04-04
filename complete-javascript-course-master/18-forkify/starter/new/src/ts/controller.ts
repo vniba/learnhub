@@ -1,5 +1,6 @@
 import * as model from './model';
-import receipeView from './view/receipeView';
+import receipeView, { RecipeView } from './view/receipeView';
+import searchView from '../js/view/searchView';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -17,10 +18,28 @@ const controlRecipe = async function () {
 
     receipeView.render(model.state.recipe);
   } catch (error) {
-    console.error(error);
+    receipeView.renderError(`${error} 🙀`)
   }
 };
 
-['hashchange', 'load'].forEach(e => window.addEventListener(e, controlRecipe));
+const controlSearchResults = async function () {
+  try {
+    // query
+    const  query = searchView.getQuery()
+    if(!query) return
+   await model.loadSearchResults(query)
+
+    searchView.clearInput()
+  } catch (error) {
+    receipeView.renderError(`${error}`)
+  }
+}
+
+controlSearchResults()
+const init = function () {
+  receipeView.addHandlerRender(controlRecipe)
+  searchView.addHandlerSearch(controlSearchResults)
+}
+init()
 
 ///////////////////////////////////////
