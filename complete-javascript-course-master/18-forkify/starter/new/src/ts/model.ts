@@ -1,4 +1,3 @@
-import { async } from 'regenerator-runtime';
 import { API_URL } from './config';
 import { getJSON } from './helpers';
 export interface Recipe {
@@ -65,4 +64,3 @@ export const loadSearchResults = async function (query:string) {
 
   }
 }
-loadSearchResults('pizza')

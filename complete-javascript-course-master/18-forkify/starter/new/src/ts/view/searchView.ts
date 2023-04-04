@@ -1,13 +1,13 @@
 class SearchView {
 
-  private parentElement = document.querySelector('.search')! as HTMLFormElement
+  protected parentElement = document.querySelector('.search')! as HTMLFormElement
 
   getQuery() {
    const query =   (this.parentElement.querySelector('.search__field') as HTMLInputElement).value
     this.clearInput()
     return query
   }
-  private clearInput() {
+  protected clearInput() {
     (this.parentElement.querySelector('.search__field') as HTMLInputElement).value = ''
   }
 

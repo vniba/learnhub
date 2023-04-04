@@ -1,65 +1,20 @@
+import View from './view';
 import { Recipe as recipeInt } from '../model';
 import icons from '../../img/icons.svg';
 
-export class RecipeView {
-  private parentElement = document.querySelector('.recipe')! as HTMLDivElement;
-  private data!: recipeInt;
-  private errorMsg = 'Please Try another one!'
-  private message = ''
+export class RecipeView  extends View{
+  protected parentElement = document.querySelector('.recipe')! as HTMLDivElement;
+  protected errorMsg = 'Please Try another one!'
+  protected message = ''
 
-  render(d: recipeInt) {
-    this.data = d;
-    const markup = this.generateMarkup();
-    this.clear();
-    this.parentElement.insertAdjacentHTML('afterbegin', markup);
-  }
 
-  private clear() {
-    this.parentElement.innerHTML = '';
-  }
-
-  public renderSpinner() {
-    const markup = `
-   <div class="spinner">
-          <svg>
-            <use href="${icons}#icon-loader"></use>
-          </svg>
-        </div>`;
-    this.clear();
-    this.parentElement.insertAdjacentHTML('afterbegin', markup);
-  }
-
-  renderError(message:string = this.errorMsg) {
-    const markup = `<div class="error">
-            <div>
-              <svg>
-                <use href="${icons}#icon-alert-triangle"></use>
-              </svg>
-            </div>
-            <p>${message}</p>
-          </div> `
-    this.clear();
-    this.parentElement.insertAdjacentHTML('afterbegin', markup);
-  }
-  renderMessage(message:string = this.message) {
-    const markup = `<div class="message">
-            <div>
-              <svg>
-                <use href="${icons}#icon-smile"></use>
-              </svg>
-            </div>
-            <p>${message}</p>
-          </div> `
-    this.clear();
-    this.parentElement.insertAdjacentHTML('afterbegin', markup);
-  }
 
   addHandlerRender(handler: (event: Event) => void): void {
   ['hashchange', 'load'].forEach((e: string) => window.addEventListener(e, handler));
 }
 
 
-  private generateMarkup(): string {
+  protected generateMarkup(): string {
     return `
     <figure class="recipe__fig">
           <img src="${this.data.image}" alt="${
@@ -144,7 +99,7 @@ export class RecipeView {
           </a>
         </div>`;
   }
-  private generateMarkupIng(ing: any) {
+  protected generateMarkupIng(ing: any) {
     return `
              <li class="recipe__ingredient">
               <svg class="recipe__icon">
