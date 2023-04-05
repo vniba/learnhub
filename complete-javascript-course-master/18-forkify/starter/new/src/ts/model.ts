@@ -1,6 +1,7 @@
-import { API_URL } from './config';
+import { API_URL, RES_PER_PAGE } from './config';
 import { getJSON } from './helpers';
 export interface Recipe {
+  [x: string]: any;
   id: number;
   title: string;
   publisher: string;
@@ -12,14 +13,18 @@ export interface Recipe {
 }
 export interface Search{
   query: string;
-  results:string[]
+  results: string[]
+  page:number
+  resultsPerPage: number;
 }
 export const state: { recipe: Recipe,search:Search } = {
   recipe: {} as Recipe,
   search: {
     query: '',
-    results:[]
-  }
+    results: [],
+    page: 1,
+    resultsPerPage: RES_PER_PAGE
+  },
 };
 
 export const loadRecipe = async (id: string) => {
@@ -63,4 +68,11 @@ export const loadSearchResults = async function (query:string) {
     throw error
 
   }
+}
+
+export const getSearchResultsPage = function (page: number=state.search.page): Recipe {
+  state.search.page = page;
+  const start = (page -  1) * state.search.resultsPerPage
+  const end = page * state.search.resultsPerPage
+  return state.search.results.slice(start, end)
 }
