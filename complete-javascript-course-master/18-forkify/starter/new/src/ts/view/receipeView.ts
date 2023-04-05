@@ -1,5 +1,5 @@
 import View from './view';
-import { Recipe as recipeInt } from '../model';
+import { Recipe, Recipe as recipeInt } from '../model';
 import icons from '../../img/icons.svg';
 
 export class RecipeView  extends View{
@@ -22,6 +22,15 @@ export class RecipeView  extends View{
 
     })
 
+  }
+
+  addHandlerBookmark(handler) {
+    this.parentElement.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLButtonElement).closest('.btn--bookmark')
+
+      if (!btn) return
+      handler()
+    })
   }
 
   protected generateMarkup(): string {
@@ -73,9 +82,9 @@ export class RecipeView  extends View{
               <use href="${icons}#icon-user"></use>
             </svg>
           </div>
-          <button class="btn--round">
+          <button class="btn--round btn--bookmark">
             <svg class="">
-              <use href="${icons}#icon-bookmark-fill"></use>
+              <use href="${icons}#icon-bookmark${this.data.bookmarked?'-fill':''}"></use>
             </svg>
           </button>
         </div>

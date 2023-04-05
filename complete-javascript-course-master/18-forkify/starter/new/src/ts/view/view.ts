@@ -7,11 +7,12 @@ export default class View {
  protected  errorMsg: any;
  protected message: any;
 
-  render(d: recipeInt) {
+  render(d: recipeInt,render = true) {
     if (!d || (Array.isArray(d) && d.length === 0))    return this.renderError()
 
     this.data = d;
     const markup = this.generateMarkup();
+    if(!render) return markup
     this.clear();
     this.parentElement.insertAdjacentHTML('afterbegin', markup);
   }
@@ -21,6 +22,30 @@ export default class View {
 
   protected clear() {
     this.parentElement.innerHTML = '';
+  }
+  update(data:recipeInt) {
+
+
+    this.data = data;
+    const newMarkup = this.generateMarkup();
+    const newDom = document.createRange().createContextualFragment(newMarkup)
+    const newElements = Array.from(newDom.querySelectorAll('*'))
+    const curElements = Array.from(this.parentElement.querySelectorAll('*'))
+
+
+    newElements.forEach((newEl, i) => {
+      const curEl = curElements[i]! as Node
+      if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue?.trim() !== ''){
+
+        curEl.textContent = newEl.textContent
+    }
+
+      if (!newEl.isEqualNode(curEl)) {
+        Array.from(newEl.attributes).forEach(attr=>curEl.setAttribute(attr.name,attr.value))
+
+        }
+    })
+
   }
 
   public renderSpinner() {
