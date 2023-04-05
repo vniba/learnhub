@@ -1,5 +1,4 @@
 import View from './view';
-import icons from '../../img/icons.svg'
 import { Recipe } from '../model';
 import preView from './preView';
 
