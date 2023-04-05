@@ -43,7 +43,6 @@ export const loadRecipe = async (id: string) => {
       cookingTime: recipe.cooking_time,
       ingredients: recipe.ingredients,
     };
-    console.log(state.recipe);
 
     if (state.bookmark.some(b => b.id === id)) {
       state.recipe.bookmarked = true
@@ -92,12 +91,17 @@ export const updateServings = function (newServings: number) {
   state.recipe.servings = newServings;
 }
 
+const persistBookmarks = function () {
+  localStorage.setItem('bookmarks',JSON.stringify(state.bookmark))
+}
+
 
 export const addBookmark = function (recipe:Recipe) {
   state.bookmark.push(recipe)
 
   //mark current recipe as bookmark
   if(recipe.id === state.recipe.id)state.recipe.bookmarked = true
+  persistBookmarks()
 }
 
 export const deleteBookmark = function (id:number) {
@@ -105,5 +109,19 @@ export const deleteBookmark = function (id:number) {
   state.bookmark.splice(index, 1,)
 
   if(state.recipe.id === id) state.recipe.bookmarked = false
+persistBookmarks()
+}
 
+
+const init = function () {
+ const storage =  localStorage.getItem('bookmarks')
+  if(storage) state.bookmark = JSON.parse(storage)
+}
+
+init()
+console.log(state.bookmark);
+
+
+const clearBookmarks = function () {
+  localStorage.clear('bookmarks')
 }
