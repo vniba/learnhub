@@ -3,7 +3,7 @@ import icons from '../../img/icons.svg'
 class Pagination extends View {
   protected parentElement = document.querySelector('.pagination')! as HTMLDivElement;
 
-   addHandlerClick(handler:() => void): void  {
+   addHandlerClick(handler:(gotoPage:number) => void): void  {
      this.parentElement.addEventListener('click', function (e){
 
        const btn = (e.target as Element)?.closest('.btn--inline') as HTMLButtonElement;
