@@ -38,6 +38,19 @@ node_modules
 .idea/**/dictionaries
 .idea/**/shelf
 
+
+vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
 # AWS User-specific
 .idea/**/aws.xml
 
@@ -222,6 +235,8 @@ dist
 
 # DynamoDB Local files
 .dynamodb/
+
+.vite/
 
 # TernJS port file
 .tern-port
