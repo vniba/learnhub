@@ -1,6 +1,7 @@
 package com.javamosh;
 
 import java.awt.*;
+import java.util.Arrays;
 import java.util.Date;
 
 public class Main {
@@ -12,7 +13,23 @@ public class Main {
         char letter = 'A';
 //        System.out.printf("%,d %f %c", viewsCount, price,letter);
 //        Main.reference();
-        Main.string();
+//        Main.string();
+        Main.array();
+    }
+
+    public static void array() {
+
+        int[][] matrix = {{1, 1}, {2, 2}};
+
+        System.out.println(Arrays.deepToString(matrix));
+
+        int[] years = new int[2];
+        years[0] = 2012;
+        years[1] = 2013;
+
+        float[] prices = {10.1f, 20.2f, 1.9f};
+        Arrays.sort(prices);
+//        System.out.printf("%s , %s", Arrays.toString(years), Arrays.toString(prices));
     }
 
     public static void reference() {
@@ -28,7 +45,7 @@ public class Main {
     }
 
     public static void string() {
-        String msg = "Hello World! \uD83D\uDE06";
+        String msg = "Hello \"World!\" \uD83D\uDE06";
         String ne = msg.replace('H', 'N');
         System.out.printf("%s -> %d %s", msg, msg.indexOf('l'), ne);
     }
