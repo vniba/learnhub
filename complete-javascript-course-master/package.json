@@ -1,0 +1,33 @@
+{
+  "name": "complete-javascript-course-master",
+  "version": "1.0.0",
+  "description": "> > > > > # complete-javascript-course-master",
+  "default": "index.html",
+  "scripts": {
+    "module": "parcel 17-Modern-JS-Modules-Tooling/starter/index.html",
+    "build": "parcel build 17-Modern-JS-Modules-Tooling/starter/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/vniba/complete-javascript-course-master.git"
+  },
+  "author": "vn!ba <itsmescorona@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/vniba/complete-javascript-course-master/issues"
+  },
+  "homepage": "https://gitlab.com/vniba/complete-javascript-course-master#readme",
+  "dependencies": {
+    "core-js": "^3.29.1",
+    "leaflet": "^1.9.3",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.3",
+    "prettier": "2.8.4",
+    "process": "^0.11.10"
+  },
+  "keywords": [
+    "js"
+  ]
+}

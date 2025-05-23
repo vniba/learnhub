@@ -1,0 +1,8 @@
+{
+<<<<<<< HEAD
+	"liveServer.settings.port": 5519
+=======
+  "conventionalCommits.scopes": ["1.0.0"],
+  "liveServer.settings.port": 5145
+>>>>>>> 6ace1e5ab45679a593d234059c0cc5a6846d0ac4
+}
