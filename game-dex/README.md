@@ -22,3 +22,6 @@ Features
 👥 User Profiles: Customize your profile, showcase your gaming achievements, and connect with other gamers.
 
 📢 News and Updates: Stay informed about the latest gaming news, updates, and announcements from the industry.
+
+
+Ref: https://github.com/mosh-hamedani/game-hub
