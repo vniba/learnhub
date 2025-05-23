@@ -1,0 +1,34 @@
+#review {
+	.review-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 30px;
+
+		.r-card {
+			border-radius: 20px;
+			transition: transform, var(--transition-time) ease-in-out;
+
+			&:hover {
+				transform: scale(1.02);
+			}
+
+			figure {
+				img {
+					border-radius: 50%;
+				}
+
+				p {
+					font-size: 1rem;
+					color: var(-s-dark-color);
+					font-style: italic;
+				}
+				h3 {
+					color: var(--dark-color);
+				}
+			}
+			.ratings i {
+				color: var(--primary-color);
+			}
+		}
+	}
+}

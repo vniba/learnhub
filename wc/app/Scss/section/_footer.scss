@@ -1,0 +1,113 @@
+#footer-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	margin: 30px 0 0 0;
+	align-items: center;
+	justify-content: space-between;
+
+	.footer-card {
+		text-align: center;
+
+		h3 {
+			color: var(--dark-color);
+			font-size: 2rem;
+		}
+		p {
+			font-size: 1.1rem;
+			color: var(--s-dark-color);
+		}
+	}
+
+	.site-info {
+		.logo {
+			color: var(--primary-color);
+			font-size: 2.5rem;
+
+			i {
+				color: var(--secondary-color);
+			}
+		}
+		.icons {
+			i {
+				color: var(--primary-color);
+				font-size: 1.1rem;
+			}
+		}
+	}
+
+	.contact-info {
+		ul {
+			text-align: left;
+			li:hover {
+				transform: translateX(10px);
+				a {
+					color: var(--dark-color);
+				}
+			}
+			li {
+				margin: 8px 0;
+				transition: translateX, 0.3s linear;
+
+				a {
+					transition: color, 0.3s linear;
+					color: var(--s-dark-color);
+					font-weight: 700;
+
+					i {
+						color: var(--primary-color);
+						margin: 0 5px;
+						font-size: 1.2rem;
+					}
+				}
+			}
+		}
+	}
+
+	.links-info {
+		ul {
+			li:hover {
+				transform: scale(1.1);
+				a {
+					color: var(--secondary-color);
+				}
+			}
+			li {
+				transition: scale, var(--transition-time) linear;
+				a {
+					color: var(--s-dark-color);
+					transition: color, var(--transition-time) linear;
+					font-weight: 700;
+				}
+			}
+		}
+	}
+
+	.news-info {
+		.mail {
+			#email {
+				margin: 0 0 10px 0;
+				width: 65%;
+				height: 30px;
+			}
+			.btn {
+				transition: background-color, var(--transition-time) linear;
+				background-color: var(--s-dark-color);
+				color: var(--text-color);
+			}
+			.btn-news:hover {
+				background-color: var(--dark-color);
+			}
+		}
+	}
+
+	.design-info {
+		justify-self: center;
+		column-span: 1, 2;
+		h3 {
+			font-size: 0.9rem;
+			span {
+				font-size: 1rem;
+			}
+		}
+	}
+}

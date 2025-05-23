@@ -1,0 +1,49 @@
+.features-container {
+	.card-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		text-align: center;
+
+		.card {
+			margin: 20px 0;
+			height: max(400px, 100%);
+			outline: var(--outline);
+			transition: outline var(--transition-time) ease-in-out;
+
+			&:hover {
+				outline-color: var(--primary-color);
+			}
+
+			figure {
+				height: 200px;
+				padding: 25px;
+
+				figcaption {
+					font-size: 1.3rem;
+					font-weight: 700;
+					color: var(--dark-color);
+				}
+			}
+
+			P {
+				text-align: center;
+			}
+
+			.card-btn {
+				transition: background, transform, var(--transition-time) ease-in-out;
+				background-color: var(--light-color);
+				color: var(--primary-color);
+				outline: var(--outline);
+
+				&:hover {
+					color: var(--light-color);
+					background-color: var(--primary-color);
+					transform: scale(1.1);
+				}
+			}
+		}
+	}
+}
