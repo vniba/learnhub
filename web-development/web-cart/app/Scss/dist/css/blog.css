@@ -1,0 +1,9 @@
+#blog .blog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+#blog .blog-container .card figure .icon i {
+  font-size: 5px;
+  color: var(--primary-color);
+}/*# sourceMappingURL=blog.css.map */

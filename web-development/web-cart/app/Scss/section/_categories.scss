@@ -1,0 +1,49 @@
+#categories {
+	.categories-container {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(300px, 1fr));
+		gap: 10px;
+		align-items: center;
+		justify-content: center;
+
+		.c-card {
+			margin-inline: auto;
+			height: max(300px, 90%);
+			max-width: 400px;
+			box-shadow: var(--shadow);
+			outline: var(--outline);
+			border-top-right-radius: 15px;
+			border-bottom-left-radius: 15px;
+			transition: outline, var(--transition-time) linear;
+
+			&:hover {
+				outline: 1px double var(--primary-color);
+			}
+
+			figure {
+				height: min(200px, 60%);
+			}
+			.discount {
+				margin: 20px 0;
+				font-size: 1.1rem;
+				color: var(--s-dark-color);
+
+				span {
+					color: var(--secondary-color);
+				}
+			}
+			.categories-btn {
+				background-color: var(--primary-color);
+				transition: transform, color, var(--transition-time) linear;
+				outline: var(--outline);
+
+				a {
+					color: var(--text-color);
+				}
+				&:hover {
+					transform: scale(1.04);
+				}
+			}
+		}
+	}
+}

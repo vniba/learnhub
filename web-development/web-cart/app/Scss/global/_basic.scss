@@ -1,0 +1,31 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	padding: 0;
+	line-height: 1.3;
+	font-family: 'Nunito', sans-serif;
+	background: #eee;
+	overflow-x: hidden;
+}
+a {
+	text-decoration: none;
+}
+li {
+	list-style-type: none;
+}
+
+h1,
+h2,
+h3 {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
