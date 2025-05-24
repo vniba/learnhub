@@ -22,7 +22,8 @@ public class Main {
 //        Main.typeCasting();
 //        Main.math();
 //        Main.formatNumber();
-        Main.input();
+//        Main.input();
+        Main.debug();
     }
 
     static void input() {
@@ -36,6 +37,18 @@ public class Main {
 
 
         scanner.close();
+    }
+
+    private static void debug() {
+         System.out.println("start");
+        printMe(4);
+        System.out.println("end");
+    }
+
+    private static void printMe(int n) {
+        for (int i = 0; i < n; i += 2) {
+            System.out.println(i);
+        }
     }
 
     static void formatNumber() {

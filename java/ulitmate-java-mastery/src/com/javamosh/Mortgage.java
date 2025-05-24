@@ -5,6 +5,9 @@ import java.text.NumberFormat;
 import java.util.Scanner;
 
 class Mortgage {
+    final static byte PERCENT = 100;
+    final static byte MONTH_IN_YEAR = 12;
+
     public static void main(String[] args) {
         mortgage();
     }
@@ -13,14 +16,19 @@ class Mortgage {
 
 
         Scanner scanner = new Scanner(System.in);
-        double mortgage = 0.0;
         long principal = getPrincipal(scanner);
         float annualInterest = getAnnualInterest(scanner);
         int year = getYear(scanner);
 
 
-        mortgage = Mortgage.calculateMortgage(principal, annualInterest, year);
-        System.out.printf("Mortgage: %s", NumberFormat.getCurrencyInstance().format(mortgage));
+        double mortgage = calculateMortgage(principal, annualInterest, year);
+        int totalNumberOfMonthlyPayments = MONTH_IN_YEAR * year;
+
+        System.out.printf("Mortgage: %s\n", NumberFormat.getCurrencyInstance().format(mortgage));
+        for (int month = 1; month <= totalNumberOfMonthlyPayments; month++) {
+            double balance = calculateRemainingMortgage(month, principal, annualInterest, year);
+            System.out.println("Payment #" + month + ": " + NumberFormat.getCurrencyInstance().format(balance));
+        }
 
         scanner.close();
     }
@@ -62,8 +70,7 @@ class Mortgage {
             System.out.print("Principal : ");
             principal = scanner.nextLong();
             if (principal < MIN_PRINCIPAL || principal > MAX_PRINCIPAL) {
-                System.out.printf("%s %s and %s", "Enter a Num b/w", NumberFormat.getCurrencyInstance().format(MIN_PRINCIPAL),
-                        NumberFormat.getCurrencyInstance().format(MAX_PRINCIPAL)).println();
+                System.out.printf("%s %s and %s", "Enter a Num b/w", NumberFormat.getCurrencyInstance().format(MIN_PRINCIPAL), NumberFormat.getCurrencyInstance().format(MAX_PRINCIPAL)).println();
             } else break;
 
 
@@ -71,14 +78,29 @@ class Mortgage {
         return principal;
     }
 
-    private static double calculateMortgage(double principal, double annualInterestRate, int totalYear) {
-        final byte PERCENT = 100;
-        final byte MONTH_IN_YEAR = 12;
-        double monthlyInterestRate = (annualInterestRate / PERCENT) / MONTH_IN_YEAR;
-        int totalNumberOfMonthlyPayments = MONTH_IN_YEAR * totalYear;
-        double monthlyPayment = Math.pow(1 + monthlyInterestRate, totalNumberOfMonthlyPayments);
+    private static double getMonthlyInterestRate(double annualInterestRate) {
+        return (annualInterestRate / PERCENT) / MONTH_IN_YEAR;
+    }
 
-        return principal * (monthlyInterestRate * monthlyPayment) / (monthlyPayment - 1);
+    private static double powerFactor(double rate, int months) {
+        return Math.pow(1 + rate, months);
+    }
 
+    private static double calculateMortgage(double principal, double annualInterestRate, int totalYears) {
+        double monthlyRate = getMonthlyInterestRate(annualInterestRate);
+        int totalMonths = MONTH_IN_YEAR * totalYears;
+
+        double pow = powerFactor(monthlyRate, totalMonths);
+        return principal * (monthlyRate * pow) / (pow - 1);
+    }
+
+    private static double calculateRemainingMortgage(int paymentsMade, double principal, double annualInterestRate, int totalYears) {
+        double monthlyRate = getMonthlyInterestRate(annualInterestRate);
+        int totalMonths = MONTH_IN_YEAR * totalYears;
+
+        double powTotal = powerFactor(monthlyRate, totalMonths);
+        double powPaid = powerFactor(monthlyRate, paymentsMade);
+
+        return principal * (powTotal - powPaid) / (powTotal - 1);
     }
 }
