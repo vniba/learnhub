@@ -8,6 +8,24 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        int baseSalary = 2000;
+        byte extraHours = 12;
+        byte hourlyRate = 22;
+        var employee = new Employee(baseSalary, hourlyRate);
+        employee.setBaseSalary(1);
+        employee.setHourlyRate(200);
+        int wage = employee.calculateWage(extraHours);
+        System.out.printf("%d > %d", wage, employee.getBaseSalary());
+
+
+        var textBox = new TextBox();
+        textBox.setText("new text");
+//        System.out.println(textBox.text.toUpperCase());
+
+
+//        procedure();
+
         byte age = 99;
         age = 1;
         long viewsCount = 2000_0000_000L;
@@ -23,7 +41,7 @@ public class Main {
 //        Main.math();
 //        Main.formatNumber();
 //        Main.input();
-        Main.debug();
+//        Main.debug();
     }
 
     static void input() {
@@ -39,8 +57,19 @@ public class Main {
         scanner.close();
     }
 
+    private static void procedure() {
+        int baseSalary = 2000;
+        byte extraHours = 12;
+        byte hourlyRate = 22;
+        System.out.println(calculateWage(baseSalary, extraHours, hourlyRate));
+    }
+
+    private static int calculateWage(int baseSalary, byte extraHours, byte hourlyRate) {
+        return baseSalary + (extraHours * hourlyRate);
+    }
+
     private static void debug() {
-         System.out.println("start");
+        System.out.println("start");
         printMe(4);
         System.out.println("end");
     }
