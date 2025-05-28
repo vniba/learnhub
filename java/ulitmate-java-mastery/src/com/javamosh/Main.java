@@ -9,14 +9,17 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        var browser = new Browser();
+//        browser.navigate(" ");
+
         int baseSalary = 2000;
         byte extraHours = 12;
         byte hourlyRate = 22;
-        var employee = new Employee(baseSalary, hourlyRate);
-        employee.setBaseSalary(1);
-        employee.setHourlyRate(200);
-        int wage = employee.calculateWage(extraHours);
-        System.out.printf("%d > %d", wage, employee.getBaseSalary());
+        var employee = new Employee(baseSalary);
+        //        employee.setBaseSalary(1);
+//        employee.setHourlyRate(200);
+        int wage = employee.calculateWage();
+        System.out.printf("%d -> %d", wage, Employee.numOfEmployees);
 
 
         var textBox = new TextBox();

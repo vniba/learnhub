@@ -31,3 +31,6 @@ bin/
 .idea
 
 !/src/META-INF/
+
+com.javamosh.iml
+ulitmate-java-mastery.iml
