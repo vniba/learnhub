@@ -1,21 +1,22 @@
-enum Tree {OAK,MANGO};
+enum Tree {OAK, MANGO};
 
-public class Enm{
-	public static void main(String[] args){
-		enum is  {A,B};
-		
-		System.out.pring()
-		System.out.print(is.A);
+public class Enm {
+    public static void main(String[] args) {
+        enum is {A, B}
+        ;
 
-		for(is i: is.values()){
-			System.out.println(i);
-		}
+        System.out.print(is.A);
 
-		System.out.println(is.B.name());
+        for (is i : is.values()) {
+            System.out.println(i);
+        }
 
-		System.out.println(is.valueOf("A").ordinal());
+        System.out.println(is.B.name());
 
-		enum Custom { J};
-		System.out.println(Custom.valueOf("J").ordinal());
-	}
+        System.out.println(is.valueOf("A").ordinal());
+
+        enum Custom {J}
+        ;
+        System.out.println(Custom.valueOf("J").ordinal());
+    }
 }
