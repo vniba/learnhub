@@ -1,49 +1,76 @@
-public class Palindrome{
+package tasks;
 
-	public static void main(String[] args){
+// 121 -> 121
+public class Palindrome {
 
-		int num = 121;	
-		boolean isPal = isPalindromeNum(num);
-		printOut(num,isPal);
-		//printPalindromes(100,1000);
-	}
-	
-	private static void printPalindromes(int start,int end){
+    public static void main(String[] args) {
 
-		int counter = start;
-		while(counter<end){
+        int num = 121;
+        boolean isPal = isPalindromeNumberDo(num);
+        printOut(num, isPal);
+        printPalindromeNumbersDo(100,1000);
+        //printPalindromes(100,1000);
+    }
 
-			boolean isPal = isPalindromeNum(counter);
+    private static boolean isPalindromeNumberDo(int number) {
+        int val = number;
+        int sum = 0;
+        do {
+            int rem = val % 10;
+            sum = (sum * 10) + rem;
 
-			if(isPal) printOut(counter,isPal);
-			
-			counter++;
-		};		
-	}
+            val = val / 10;
+//            System.out.printf("%s  %d\n",sum,rem);
+        } while (val > 0);
+
+        return number == sum;
+    }
+
+    private static void printPalindromeNumbersDo(int start, int end) {
+        do {
+            boolean isPal = isPalindromeNumberDo(start);
+            if (isPal) printOut(start, true);
+            start++;
+        } while (start < end);
+    }
+
+    private static void printPalindromes(int start, int end) {
+
+        int counter = start;
+        while (counter < end) {
+
+            boolean isPal = isPalindromeNum(counter);
+
+            if (isPal) printOut(counter, isPal);
+
+            counter++;
+        }
+        ;
+    }
 
 
-	private static boolean isPalindromeNum(int num){
-		
-		int counter = num;
-		
-		int rev = 0;
+    private static boolean isPalindromeNum(int num) {
 
-		while(counter>0){
-			int rem = counter %10;
-			rev =(rev * 10) + rem;
-			counter=counter/10;
+        int counter = num;
 
-			//System.out.printf("%s  %d\n",rev,rem);
-		}
-	
-		return num ==rev;
-	}
+        int rev = 0;
 
-	private static void printOut(int num,boolean is){
+        while (counter > 0) {
+            int rem = counter % 10;
+            rev = (rev * 10) + rem;
+            counter = counter / 10;
 
-		String msg = is?"is Palindrome":"Not palindrome";
-		System.out.printf("%d %s\n",num,msg);
-	}
-	
+            //System.out.printf("%s  %d\n",rev,rem);
+        }
+
+        return num == rev;
+    }
+
+    private static void printOut(int num, boolean is) {
+
+        String msg = is ? "is Palindrome" : "Not palindrome";
+        System.out.printf("%d %s\n", num, msg);
+    }
+
 
 }
