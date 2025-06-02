@@ -1,3 +1,4 @@
+package src.basics;
 class Cast {
 	public static void main(String[] args){
 	int idk = 2;	

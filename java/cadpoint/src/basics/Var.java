@@ -1,3 +1,4 @@
+package src.basics;
 class Var {
 	static String name = "jon";
 	static private boolean isG  = true;

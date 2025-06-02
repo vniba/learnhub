@@ -1,4 +1,4 @@
-package tasks;
+package src.tasks;
 
 // 121 -> 121
 public class Palindrome {

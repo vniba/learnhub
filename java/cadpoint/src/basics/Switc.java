@@ -1,3 +1,4 @@
+package src.basics;
 class Switc {
 
 	public static void main(String[] args){

@@ -1,3 +1,4 @@
+package src.basics;
 class Cml{
 
 	public static void main(String[] args){

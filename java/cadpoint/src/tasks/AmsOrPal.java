@@ -1,4 +1,4 @@
-package tasks;
+package src.tasks;
 
 // 153 -> 1 cube + 5 cube + 3 cube -> 153
 public class AmsOrPal {

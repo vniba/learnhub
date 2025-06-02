@@ -1,3 +1,4 @@
+package src.basics;
 class Operator{
 		
 	public static void main(String[] args){

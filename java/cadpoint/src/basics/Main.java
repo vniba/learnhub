@@ -1,4 +1,4 @@
-package basics;
+package src.basics;
 
 class Main {
 

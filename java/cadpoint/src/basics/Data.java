@@ -1,3 +1,4 @@
+package src.basics;
 class Data {
 	
 	public static void main(String[] args)

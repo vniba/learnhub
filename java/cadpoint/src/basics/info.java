@@ -1,4 +1,5 @@
-class Info 
+package src.basics;
+class Info
 {
 	public static void main(String[] args)
 	{

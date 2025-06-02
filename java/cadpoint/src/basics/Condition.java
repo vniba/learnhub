@@ -1,3 +1,4 @@
+package src.basics;
 class Condition{
 
 	public static void main(String[] args){

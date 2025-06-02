@@ -1,3 +1,4 @@
+package src.basics;
 enum Phone {ANDROID,IPHONE};
 
 class Enm1{

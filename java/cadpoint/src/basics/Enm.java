@@ -1,3 +1,4 @@
+package src.basics;
 enum Tree {OAK, MANGO};
 
 public class Enm {
