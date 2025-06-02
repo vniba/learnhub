@@ -4,9 +4,30 @@ public class Prime {
 
     public static void main(String[] args) {
         int n = 17;
-        printOut(n, isPrimeNumberDo(n));
+        printOut(n, isPrimeNumberFor(n));
+//        printOut(n, isPrimeNumberDo(n));
 //        printPrimes(100, 1000);
-        printPrimeNumbersDo(100, 1000);
+//        printPrimeNumbersDo(100, 1000);
+        printPrimeNumberFor(100, 1000);
+    }
+
+    private static void printPrimeNumberFor(int start, int limit) {
+        for (int i = start; i <= limit; i++) {
+            boolean isPr = isPrimeNumberFor(i);
+            if (isPr) printOut(i, true);
+        }
+    }
+
+    private static boolean isPrimeNumberFor(int number) {
+        int counter = 0;
+        for (int start = 2; start <= number / 2; start++) {
+            int rem = number % start;
+            if (rem == 0) {
+                counter++;
+                break;
+            }
+        }
+        return counter == 0;
     }
 
     private static void printPrimeNumbersDo(int start, int end) {
@@ -21,7 +42,7 @@ public class Prime {
         int start = 2;
         int counter = 0;
         do {
-            int rem = number % 2;
+            int rem = number % start;
             if (rem == 0) {
                 counter++;
                 break;

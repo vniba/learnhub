@@ -5,12 +5,30 @@ public class AmsOrPal {
 
     public static void main(String[] args) {
         int amsNum = 153;
-        boolean isArms = isArmstrongNumberDo(amsNum);
+        boolean isArms = isArmstrongNumberFor(amsNum);
 
         printOut(amsNum, isArms);
 
 //        printArmstrongNumbers(100, 1000);
-        printArmstrongNumbersDo(100, 1000);
+//        printArmstrongNumbersDo(100, 1000);
+        printArmstrongNumbersFor(100, 1000);
+    }
+
+    private static boolean isArmstrongNumberFor(int number) {
+        int sum = 0;
+        for (int val = number; val > 0; val /= 10) {
+            int rem = val % 10;
+            sum += rem * rem * rem;
+        }
+
+        return sum == number;
+    }
+
+    private static void printArmstrongNumbersFor(int start, int end) {
+        for (int i = start; i < end; i++) {
+            boolean isArm = isArmstrongNumberFor(i);
+            if (isArm) printOut(i, true);
+        }
     }
 
     private static boolean isArmstrongNumberDo(int number) {

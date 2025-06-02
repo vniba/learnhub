@@ -5,7 +5,20 @@ public class Fibonacci {
 
     public static void main(String[] args) {
 
-        printFibDo(0, 10);
+//        printFibDo(0, 5);
+        printFibFor(0, 5);
+    }
+
+    private static void printFibFor(int start, int limit) {
+        int a = start;
+        int b = a + 1;
+        int c = a + b;
+        for (int i = a; i <= limit; i++) {
+            printOut(a);
+            c = a + b;
+            a = b;
+            b = c;
+        }
     }
 
     private static void printFibDo(int start, int limit) {
@@ -40,4 +53,7 @@ public class Fibonacci {
         }
     }
 
+    private static void printOut(int num) {
+        System.out.println(num);
+    }
 }

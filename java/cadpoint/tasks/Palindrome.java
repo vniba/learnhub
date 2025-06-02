@@ -6,10 +6,27 @@ public class Palindrome {
     public static void main(String[] args) {
 
         int num = 121;
-        boolean isPal = isPalindromeNumberDo(num);
+        boolean isPal = isPalindromeNumberFor(num);
         printOut(num, isPal);
-        printPalindromeNumbersDo(100,1000);
+//        printPalindromeNumbersDo(100, 1000);
         //printPalindromes(100,1000);
+        printPalindromeNumberFor(100, 1000);
+    }
+
+    private static boolean isPalindromeNumberFor(int number) {
+        int sum = 0;
+        for (int i = number; i > 0; i /= 10) {
+            int rem = i % 10;
+            sum = (sum * 10) + rem;
+        }
+        return number == sum;
+    }
+
+    private static void printPalindromeNumberFor(int start, int limit) {
+        for (int i = start; i <= limit; i++) {
+            boolean isPal = isPalindromeNumberFor(i);
+            if (isPal) printOut(i, true);
+        }
     }
 
     private static boolean isPalindromeNumberDo(int number) {
