@@ -1,14 +1,20 @@
 package com.mytube;
 
 public class VideoProcessor {
+    private VideoEncodable encoder;
+    private VideoStorable database;
+    private Notification notification;
+
+    VideoProcessor(VideoEncodable encoder, VideoStorable database, Notification notification) {
+        this.encoder = encoder;
+        this.database = database;
+        this.notification = notification;
+    }
+
     public void process(Video video) {
-        var encoder = new VideoEncoder();
         encoder.encode(video);
 
-        var database = new VideoDatabase();
         database.store(video);
-
-        var emailService = new EmailService();
-        emailService.sendEmail(video.getUser());
+        notification.notify(video.getUser());
     }
 }
