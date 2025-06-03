@@ -59,6 +59,7 @@ public class Main {
 //        Main.debug();
     }
 
+
     private static void calculator() {
         var calculator = new TaxCalculator2030(200_2020);
 //        report.show();
