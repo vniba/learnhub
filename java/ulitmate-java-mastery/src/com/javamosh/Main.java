@@ -9,7 +9,8 @@ public class Main {
     public static void main(String[] args) {
 
 
-        render();
+        calculator();
+        //        render();
         //        point();
 
         //        casting();
@@ -56,6 +57,16 @@ public class Main {
 //        Main.formatNumber();
 //        Main.input();
 //        Main.debug();
+    }
+
+    private static void calculator() {
+        var calculator = new TaxCalculator2030(200_2020);
+//        report.show();
+
+        var report = new TaxReport();
+        var calculator2031 = new TaxCalculator2031(3000);
+//        report.setCalculator(calculator2031);
+        report.show(calculator2031);
     }
 
     private static void render() {
