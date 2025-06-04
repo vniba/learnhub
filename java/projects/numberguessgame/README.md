@@ -1,4 +1,5 @@
 https://roadmap.sh/projects/number-guessing-game
+- [solution](https://roadmap.sh/projects/number-guessing-game/solutions?u=65fe7c926deb533d6e16f51b)
 ## Number Guessing Game
 
 You are required to build a simple number guessing game where the computer randomly selects a number and the user has to

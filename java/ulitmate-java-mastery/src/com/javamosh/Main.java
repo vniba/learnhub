@@ -1,15 +1,19 @@
 package com.javamosh;
 
+import exceptions.ExceptionX;
+
 import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
+
 public class Main {
     public static void main(String[] args) {
 
+        ExceptionX.show();
 
-        calculator();
+//        calculator();
         //        render();
         //        point();
 
