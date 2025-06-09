@@ -3,8 +3,12 @@ package src.basics;
 class Main {
 
     public static void main(String[] args) {
-        oddEven();
-        oddEvenNeg();
+        Constr constr = new Constr("ok");
+        new Constr(2);
+
+
+//        oddEven();
+//        oddEvenNeg();
     }
 
 

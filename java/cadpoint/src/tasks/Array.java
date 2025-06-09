@@ -1,11 +1,15 @@
 package src.tasks;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 
 public class Array {
 
     public static void main(String[] args) {
+
+        matricMultiplication();
+
         int[] values = {1, 7, 8, 6, 5, 2, 2, 4, 9, 0, 1};
         Array ar = new Array();
 //		ar.sum();
@@ -16,10 +20,97 @@ public class Array {
         int[] set = set(reversed);
 //        printArr(set);
         int[] odd = oddPosition(values);
-        printArr(odd);
+//        printArr(odd);
 //        System.out.println(sum);
         //        printArr(reversed);
 
+    }
+
+
+    private static void matricMultiplication() {
+//        [2,3] [3,4]
+//
+
+        var sc = new Scanner(System.in);
+
+        int limit = 2;
+        var mt1 = readMatrix(limit, sc);
+        var mt2 = readMatrix(limit, sc);
+
+        System.out.printf("matrices %s , %s", Arrays.deepToString(mt1), Arrays.deepToString(mt2));
+//        limit to 2
+
+//        var sum = matrixCalcOld(mt1, mt2, limit);
+        var sum = matrixStrassen(mt1, mt2, limit);
+
+        System.out.println(Arrays.deepToString(sum));
+
+
+        sc.close();
+    }
+
+
+    private static int[][] matrixStrassen(int[][] x, int[][] y, Integer limit) {
+
+        int[][] sum = new int[limit][limit];
+
+        int a, b, c, d, e, f, g;
+        a = (x[0][0] + x[1][1]) * (y[0][0] + y[1][1]);
+        b = (x[1][0] + x[1][1]) * y[0][0];
+        c = (y[0][1] - y[1][1]) * x[0][0];
+        d = (-y[0][0] + y[1][0]) * x[1][1];
+        e = (x[0][0] + x[0][1]) * y[1][1];
+        f = (-x[0][0] + x[1][0]) * (y[0][0] + y[0][1]);
+        g = (x[0][1] - x[1][1]) * (y[1][0] + y[1][1]);
+
+        int z00, z01, z10, z11;
+        z00 = ((a + d) - e) + g;
+        z01 = c + e;
+        z10 = b + d;
+        z11 = (a - b) + c + f;
+
+        sum[0][0] = z00;
+        sum[0][1] = z01;
+        sum[1][0] = z10;
+        sum[1][1] = z11;
+
+
+        return sum;
+
+
+    }
+
+    private static int[][] matrixCalcOld(int[][] mt1, int[][] mt2, Integer limit) {
+        int[][] sum = new int[limit][limit];
+
+        for (int i = 0; i < limit; i++) {
+            for (int j = 0; j < limit; j++) {
+                for (int k = 0; k < limit; k++) {
+                    sum[i][j] += mt1[i][k] * mt2[k][j];
+                }
+            }
+        }
+
+        return sum;
+    }
+
+    private static int[][] readMatrix(Integer limit, Scanner sc) {
+
+
+        System.out.println("2d matrix with 2x2");
+
+
+        int[][] mt = new int[limit][limit];
+
+        System.out.println("Print elements in array: ");
+
+        for (int i = 0; i < limit; i++) {
+            for (int j = 0; j < limit; j++) {
+                mt[i][j] = sc.nextInt();
+            }
+        }
+
+        return mt;
     }
 
     private static int[] oddPosition(int[] value) {
