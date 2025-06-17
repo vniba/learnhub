@@ -8,7 +8,9 @@ public class Array {
 
     public static void main(String[] args) {
 
-        matricMultiplication();
+        matrixMul3();
+        //        matricMultiplication();
+
 
         int[] values = {1, 7, 8, 6, 5, 2, 2, 4, 9, 0, 1};
         Array ar = new Array();
@@ -24,6 +26,16 @@ public class Array {
 //        System.out.println(sum);
         //        printArr(reversed);
 
+    }
+
+    private static void matrixMul3() {
+        var sc = new Scanner(System.in);
+
+        int limit = 3;
+        var mt1 = readMatrix(3, sc);
+//        System.out.println(Arrays.deepToString(mt1));
+
+        sc.close();
     }
 
 
@@ -97,17 +109,24 @@ public class Array {
     private static int[][] readMatrix(Integer limit, Scanner sc) {
 
 
-        System.out.println("2d matrix with 2x2");
+        System.out.printf("%d matrix with %dx%d\n", limit, limit, limit);
 
 
         int[][] mt = new int[limit][limit];
 
-        System.out.println("Print elements in array: ");
 
         for (int i = 0; i < limit; i++) {
+            System.out.printf("r %d \n", i);
             for (int j = 0; j < limit; j++) {
                 mt[i][j] = sc.nextInt();
             }
+        }
+        for (int i = 0; i < limit; i++) {
+            for (int j = 0; j < limit; j++) {
+                if (i >= j)
+                    System.out.printf("%d ", mt[i][j]);
+            }
+            System.out.println(" ");
         }
 
         return mt;
