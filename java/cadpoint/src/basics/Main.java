@@ -3,8 +3,20 @@ package src.basics;
 class Main {
 
     public static void main(String[] args) {
-        Constr constr = new Constr("ok");
-        new Constr(2);
+//        Constr constr = new Constr("ok");
+//        new Constr(2);
+
+//        var o = new Overload(1, 2);
+
+        var cat = new Cat("pink");
+        var dog = new Dog("green");
+        dog.printColor();
+        cat.setColor(dog.getColor());
+
+        cat.printColor();
+
+        var hus = new Hus("yellow");
+        hus.printColor();
 
 
 //        oddEven();
